@@ -324,7 +324,7 @@ export default function Hero() {
                   &lt; 4h
                 </div>
                 <div style={{ fontSize: 13, opacity: 0.75, marginTop: 6 }}>
-                  Werktags zwischen 7–19 Uhr
+                  Werktags zwischen 8–18 Uhr
                 </div>
               </div>
             </motion.div>
