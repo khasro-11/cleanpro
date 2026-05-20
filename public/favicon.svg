@@ -1,7 +1,54 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
-  <rect width="96" height="96" rx="20" fill="#0e1f33"/>
-  <path d="M40 14 C 40 32, 44 40, 64 44 C 44 48, 40 56, 40 74
-           C 40 56, 36 48, 16 44 C 36 40, 40 32, 40 14 Z" fill="#ffffff"/>
-  <path d="M72 60 C 72 68, 74 72, 84 74 C 74 76, 72 80, 72 88
-           C 72 80, 70 76, 60 74 C 70 72, 72 68, 72 60 Z" fill="#7fb3d5"/>
+  <!-- Hintergrund: weißes abgerundetes Quadrat mit hellgrauem Rand -->
+  <rect width="96" height="96" rx="18" fill="#f0f2f5"/>
+
+  <!-- Linkes Hochhaus (dunkel navy) -->
+  <rect x="8" y="32" width="20" height="46" rx="1.5" fill="#1e2f4a"/>
+  <rect x="10" y="36" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="41" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="46" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="51" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="56" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="61" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="10" y="66" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+
+  <!-- Rechtes Hochhaus (dunkel navy) -->
+  <rect x="68" y="32" width="20" height="46" rx="1.5" fill="#1e2f4a"/>
+  <rect x="70" y="36" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="41" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="46" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="51" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="56" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="61" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+  <rect x="70" y="66" width="16" height="2.5" rx="0.5" fill="#4a6080" opacity="0.7"/>
+
+  <!-- Mittleres Glasgebäude (hellblau, transparent) -->
+  <rect x="34" y="16" width="28" height="62" rx="2" fill="#7fb8d4" opacity="0.85"/>
+  <rect x="44" y="19" width="4" height="55" rx="1" fill="#ffffff" opacity="0.3"/>
+
+  <!-- Traditionelles Haus davor (dunkel navy) -->
+  <!-- Dach links -->
+  <polygon points="22,68 48,52 74,68" fill="#1e2f4a"/>
+  <!-- Dach Aufbau (kleines Spitzdach oben) -->
+  <polygon points="36,56 48,48 60,56" fill="#1e2f4a"/>
+  <!-- Hauskörper -->
+  <rect x="24" y="66" width="48" height="12" rx="1" fill="#1e2f4a"/>
+  <!-- Tür -->
+  <rect x="44" y="69" width="8" height="9" rx="1" fill="#4a6080" opacity="0.6"/>
+  <!-- Fenster links -->
+  <rect x="28" y="69" width="7" height="5" rx="0.5" fill="#7fb8d4" opacity="0.6"/>
+  <!-- Fenster rechts -->
+  <rect x="61" y="69" width="7" height="5" rx="0.5" fill="#7fb8d4" opacity="0.6"/>
+
+  <!-- Bodenlinie -->
+  <rect x="6" y="78" width="84" height="2" rx="1" fill="#1e2f4a" opacity="0.3"/>
+
+  <!-- Sparkle links oben -->
+  <path d="M18 22 L19 26 L23 27 L19 28 L18 32 L17 28 L13 27 L17 26 Z" fill="#7fb8d4" opacity="0.8"/>
+  <!-- Sparkle rechts oben -->
+  <path d="M78 22 L79 26 L83 27 L79 28 L78 32 L77 28 L73 27 L77 26 Z" fill="#7fb8d4" opacity="0.8"/>
+  <!-- Sparkle links unten (kleiner) -->
+  <path d="M12 50 L12.8 53 L16 53.8 L12.8 54.6 L12 57.6 L11.2 54.6 L8 53.8 L11.2 53 Z" fill="#7fb8d4" opacity="0.6"/>
+  <!-- Sparkle rechts unten (kleiner) -->
+  <path d="M84 48 L84.8 51 L88 51.8 L84.8 52.6 L84 55.6 L83.2 52.6 L80 51.8 L83.2 51 Z" fill="#7fb8d4" opacity="0.6"/>
 </svg>
