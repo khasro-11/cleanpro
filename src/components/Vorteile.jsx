@@ -24,10 +24,9 @@ function Icon({ name, size = 20, color = NAVY }) {
 const features = [
   { icon: 'shield', t: 'Voll versichert',   s: 'Haftpflicht bis 5 Mio. €. Schäden? Wir regeln das.' },
   { icon: 'leaf',   t: 'Öko-Mittel',        s: 'Ohne Mikroplastik, mit EU-Ecolabel.' },
-  { icon: 'clock',  t: 'Pünktlich',         s: '±10 Minuten oder Sie zahlen nichts.' },
   { icon: 'check',  t: 'Festes Team',       s: 'Keine Subunternehmer, keine wechselnden Gesichter.' },
   { icon: 'phone',  t: 'Direktdraht',       s: 'Eine Nummer. Eine Person. Antwort in < 4h.' },
-  { icon: 'star',   t: 'Inhabergeführt',     s: 'Direkt mit dem Inhaber — kein Callcenter, kein Zwischenhändler.' },
+  { icon: 'star',   t: 'Inhabergeführt',    s: 'Direkt mit dem Inhaber — kein Callcenter, kein Zwischenhändler.' },
 ]
 
 export default function Vorteile() {
@@ -50,12 +49,12 @@ export default function Vorteile() {
             style={{ fontSize: 'clamp(32px, 3vw, 44px)', fontWeight: 800, margin: '8px 0 0', letterSpacing: '-0.03em', color: INK }}
             variants={fadeUp}
           >
-            Sechs Gründe, weniger zu kontrollieren.
+            Fünf Gründe, weniger zu kontrollieren.
           </motion.h2>
         </motion.div>
 
         <motion.div
-          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14 }}
+          style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 14, gridAutoRows: '1fr' }}
           className="trust-grid"
           variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
         >

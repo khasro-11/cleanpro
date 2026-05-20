@@ -144,6 +144,9 @@ export default function Kontakt() {
     name: "",
     email: "",
     telefon: "",
+    flaeche: "",
+    frequenz: "",
+    starttermin: "",
     nachricht: "",
   });
   const [objekt, setObjekt] = useState("buero");
@@ -169,6 +172,9 @@ export default function Kontakt() {
           from_email: form.email,
           from_phone: form.telefon || "—",
           object_type: objekt,
+          flaeche: form.flaeche || "—",
+          frequenz: form.frequenz || "—",
+          starttermin: form.starttermin || "—",
           message: form.nachricht || "—",
           submitted_at: new Date().toLocaleString("de-DE", {
             dateStyle: "short",
@@ -327,6 +333,84 @@ export default function Kontakt() {
                   </div>
                 </div>
 
+                {/* Qualifying fields: Fläche + Frequenz */}
+                <div
+                  className="qualify-row"
+                  style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}
+                >
+                  <div>
+                    <label
+                      htmlFor="flaeche"
+                      style={{
+                        display: "block", fontSize: 11, fontWeight: 700,
+                        color: INK_SOFT, letterSpacing: "0.1em",
+                        textTransform: "uppercase", marginBottom: 6,
+                      }}
+                    >
+                      Objektgröße
+                    </label>
+                    <select
+                      id="flaeche"
+                      value={form.flaeche}
+                      onChange={update}
+                      className="form-input"
+                      style={{ appearance: "none", cursor: "pointer" }}
+                    >
+                      <option value="">Bitte wählen …</option>
+                      <option value="unter-100">Unter 100 m²</option>
+                      <option value="100-250">100 – 250 m²</option>
+                      <option value="250-500">250 – 500 m²</option>
+                      <option value="500+">Über 500 m²</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label
+                      htmlFor="frequenz"
+                      style={{
+                        display: "block", fontSize: 11, fontWeight: 700,
+                        color: INK_SOFT, letterSpacing: "0.1em",
+                        textTransform: "uppercase", marginBottom: 6,
+                      }}
+                    >
+                      Frequenz
+                    </label>
+                    <select
+                      id="frequenz"
+                      value={form.frequenz}
+                      onChange={update}
+                      className="form-input"
+                      style={{ appearance: "none", cursor: "pointer" }}
+                    >
+                      <option value="">Bitte wählen …</option>
+                      <option value="einmalig">Einmalig</option>
+                      <option value="woechentlich">Wöchentlich</option>
+                      <option value="2x-woche">2× pro Woche</option>
+                      <option value="taeglich">Täglich</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Wunsch-Starttermin */}
+                <div>
+                  <label
+                    htmlFor="starttermin"
+                    style={{
+                      display: "block", fontSize: 11, fontWeight: 700,
+                      color: INK_SOFT, letterSpacing: "0.1em",
+                      textTransform: "uppercase", marginBottom: 6,
+                    }}
+                  >
+                    Wunsch-Starttermin (optional)
+                  </label>
+                  <input
+                    id="starttermin"
+                    type="date"
+                    value={form.starttermin}
+                    onChange={update}
+                    className="form-input"
+                  />
+                </div>
+
                 {/* Name */}
                 <div>
                   <label
@@ -401,12 +485,13 @@ export default function Kontakt() {
                         marginBottom: 6,
                       }}
                     >
-                      Telefon (optional)
+                      Telefon
                     </label>
                     <input
                       id="telefon"
                       type="tel"
                       placeholder="030 ·"
+                      required
                       value={form.telefon}
                       onChange={update}
                       className="form-input"
@@ -522,7 +607,7 @@ export default function Kontakt() {
                     "Wird gesendet…"
                   ) : (
                     <>
-                      Angebot erhalten{" "}
+                      Festpreisangebot in 24h erhalten{" "}
                       <Icon name="arrow" size={16} color={PAPER} />
                     </>
                   )}
@@ -651,9 +736,10 @@ export default function Kontakt() {
           .object-tiles { grid-template-columns: repeat(4, 1fr) !important; }
         }
 
-        /* Mobile: stack email/phone vertically */
+        /* Mobile: stack email/phone and qualify row vertically */
         @media (max-width: 520px) {
           .email-phone-row { grid-template-columns: 1fr !important; }
+          .qualify-row { grid-template-columns: 1fr !important; }
         }
 
         /* Mobile: flex column with reordering */

@@ -16,16 +16,41 @@ function Icon({ name, size = 24, color = INK }) {
     case 'window':   return <svg {...p}><rect x="3" y="3" width="18" height="18" rx="1"/><line x1="12" y1="3" x2="12" y2="21"/><line x1="3" y1="12" x2="21" y2="12"/></svg>
     case 'key':      return <svg {...p}><circle cx="8" cy="14" r="4"/><line x1="11" y1="11" x2="20" y2="2"/><line x1="17" y1="5" x2="20" y2="8"/><line x1="14" y1="8" x2="17" y2="11"/></svg>
     case 'spray':    return <svg {...p}><rect x="7" y="9" width="9" height="12" rx="1"/><path d="M9 9V5h5v4"/><path d="M14 5h4M14 3h4M14 7h4"/></svg>
-    case 'arrow':    return <svg {...p}><line x1="4" y1="12" x2="20" y2="12"/><polyline points="14 6 20 12 14 18"/></svg>
     default:         return null
   }
 }
 
+const TRUST_FOOTER = 'Festpreis nach kostenloser Besichtigung. Keine Überraschungen.'
+
 const services = [
-  { icon: 'building', title: 'Gewerbe', bodyDesktop: 'Büros, Praxen, Studios. Wöchentlich oder täglich.',  bodyMobile: 'Büros, Praxen. Wöchentlich oder täglich.', tag: 'ab 38 €/h',    dark: true },
-  { icon: 'window',   title: 'Fenster', bodyDesktop: 'Streifenfrei innen + außen, alle Höhen.',             bodyMobile: 'Streifenfrei innen + außen.',             tag: 'ab 4,50 €/m²', dark: false },
-  { icon: 'key',      title: 'Airbnb',  bodyDesktop: 'Wechsel zwischen Gästen, Wäsche & Foto-Check.',      bodyMobile: 'Wechsel, Wäsche, Foto-Check.',            tag: 'ab 65 € flat', dark: false },
-  { icon: 'spray',    title: 'Gebäude', bodyDesktop: 'Treppenhaus, Hof, Eingang. Wöchentlich.',             bodyMobile: 'Treppenhaus, Hof, Eingang.',              tag: 'auf Anfrage',  dark: false },
+  {
+    icon: 'building',
+    title: 'Gewerbe',
+    valueLabel: 'Festpreis-Monatspaket',
+    body: 'Wöchentlich oder täglich. Festes Team. Monatsbericht inklusive.',
+    dark: true,
+  },
+  {
+    icon: 'window',
+    title: 'Fenster',
+    valueLabel: 'Streifenfrei. Garantiert.',
+    body: 'Innen + außen, alle Höhen. Festpreis nach Besichtigung.',
+    dark: false,
+  },
+  {
+    icon: 'key',
+    title: 'Airbnb',
+    valueLabel: 'Turnover in 3 Stunden.',
+    body: 'Wechsel, Wäsche, Foto-Check. Pauschalpreis pro Objekt.',
+    dark: false,
+  },
+  {
+    icon: 'spray',
+    title: 'Gebäude',
+    valueLabel: 'Verlässlich. Wöchentlich.',
+    body: 'Treppenhaus, Hof, Eingang. Monatspauschale.',
+    dark: false,
+  },
 ]
 
 export default function Services() {
@@ -55,7 +80,7 @@ export default function Services() {
           className="services-grid"
           variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
         >
-          {services.map((s, i) => (
+          {services.map((s) => (
             <motion.div
               key={s.title}
               className="service-card"
@@ -80,24 +105,27 @@ export default function Services() {
 
               {/* Content */}
               <div className="service-content">
-                {/* Title row (title + tag shown on mobile) */}
-                <div className="service-title-row">
-                  <div className="service-title" style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>{s.title}</div>
-                  <div className="service-tag-mobile" style={{ fontSize: 11, fontWeight: 700, color: s.dark ? SKY : NAVY, whiteSpace: 'nowrap' }}>{s.tag}</div>
+                <div className="service-title" style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>{s.title}</div>
+                <div className="service-value-label" style={{
+                  fontWeight: 700,
+                  color: s.dark ? SKY : NAVY,
+                  letterSpacing: '-0.01em',
+                }}>
+                  {s.valueLabel}
                 </div>
                 <div className="service-body" style={{ lineHeight: 1.5, color: s.dark ? 'rgba(245,247,248,0.7)' : INK_SOFT }}>
-                  <span className="body-desktop">{s.bodyDesktop}</span>
-                  <span className="body-mobile">{s.bodyMobile}</span>
+                  {s.body}
                 </div>
               </div>
 
-              {/* Desktop footer: tag + arrow */}
+              {/* Desktop trust footer */}
               <div className="service-footer" style={{
                 borderTop: `1px solid ${s.dark ? 'rgba(255,255,255,0.1)' : LINE}`,
-                display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                fontSize: 11,
+                color: s.dark ? 'rgba(245,247,248,0.5)' : INK_SOFT,
+                fontStyle: 'italic',
               }}>
-                <span style={{ fontSize: 13, fontWeight: 700, color: s.dark ? SKY : NAVY }}>{s.tag}</span>
-                <Icon name="arrow" size={16} color={s.dark ? PAPER : INK} />
+                {TRUST_FOOTER}
               </div>
             </motion.div>
           ))}
@@ -117,20 +145,17 @@ export default function Services() {
           }
           .service-card {
             padding: 24px;
-            min-height: 220px;
+            min-height: 240px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
           }
           .service-icon-box { width: 48px; height: 48px; }
-          .service-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
-          .service-title-row { display: block; }
-          .service-title { font-size: 20px; margin-bottom: 6px; }
-          .service-tag-mobile { display: none !important; }
+          .service-content { flex: 1; display: flex; flex-direction: column; gap: 6px; margin: 16px 0; }
+          .service-title { font-size: 20px; margin-bottom: 2px; }
+          .service-value-label { font-size: 14px; }
           .service-body { font-size: 13px; }
-          .body-desktop { display: inline; }
-          .body-mobile { display: none; }
-          .service-footer { padding-top: 14px; margin-top: 20px; }
+          .service-footer { padding-top: 14px; }
         }
 
         /* Desktop: 4-column grid */
@@ -144,24 +169,21 @@ export default function Services() {
           }
           .service-card {
             padding: 28px;
-            min-height: 280px;
+            min-height: 300px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
           }
           .service-icon-box { width: 52px; height: 52px; }
           .service-icon-svg { width: 24px !important; height: 24px !important; }
-          .service-content { flex: 1; display: flex; flex-direction: column; justify-content: flex-end; gap: 6px; }
-          .service-title-row { display: block; }
-          .service-title { font-size: 24px; margin-bottom: 8px; }
-          .service-tag-mobile { display: none !important; }
+          .service-content { flex: 1; display: flex; flex-direction: column; gap: 6px; margin: 20px 0; }
+          .service-title { font-size: 24px; margin-bottom: 2px; }
+          .service-value-label { font-size: 15px; }
           .service-body { font-size: 14px; }
-          .body-desktop { display: inline; }
-          .body-mobile { display: none; }
-          .service-footer { padding-top: 16px; margin-top: 24px; }
+          .service-footer { padding-top: 16px; }
         }
 
-        /* Mobile */
+        /* Mobile: horizontal card, no footer */
         @media (max-width: 767px) {
           .services-container { padding: 32px 12px 0 !important; }
           .services-subtitle { display: none !important; }
@@ -178,19 +200,11 @@ export default function Services() {
             align-items: center;
             gap: 16px;
           }
-          .service-icon-box { width: 48px; height: 48px; border-radius: 12px !important; }
+          .service-icon-box { width: 48px; height: 48px; border-radius: 12px !important; flex-shrink: 0; }
           .service-content { flex: 1; min-width: 0; }
-          .service-title-row {
-            display: flex !important;
-            align-items: baseline;
-            justify-content: space-between;
-            gap: 8px;
-          }
-          .service-title { font-size: 18px; margin-bottom: 4px; }
-          .service-tag-mobile { display: block !important; }
+          .service-title { font-size: 18px; margin-bottom: 2px; }
+          .service-value-label { font-size: 12px; margin-bottom: 2px; }
           .service-body { font-size: 12px; }
-          .body-desktop { display: none; }
-          .body-mobile { display: inline; }
           .service-footer { display: none !important; }
         }
       `}</style>
