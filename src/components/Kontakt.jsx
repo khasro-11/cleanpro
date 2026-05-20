@@ -96,10 +96,10 @@ function Icon({ name, size = 18, color = NAVY }) {
 }
 
 const objectTypes = [
-  { id: "buero", label: "Büro", icon: "building" },
-  { id: "arztpraxis", label: "Arztpraxis", icon: "shield" },
-  { id: "airbnb", label: "Airbnb", icon: "key" },
-  { id: "andere", label: "Andere", icon: "spray" },
+  { id: "Büro", label: "Büro", icon: "building" },
+  { id: "Arztpraxis", label: "Arztpraxis", icon: "shield" },
+  { id: "Airbnb", label: "Airbnb", icon: "key" },
+  { id: "Andere", label: "Andere", icon: "spray" },
 ];
 
 function ContactRow({ icon, label, value }) {
@@ -149,7 +149,7 @@ export default function Kontakt() {
     starttermin: "",
     nachricht: "",
   });
-  const [objekt, setObjekt] = useState("buero");
+  const [objekt, setObjekt] = useState("Büro");
   const [honeypot, setHoneypot] = useState("");
   const [sent, setSent] = useState(false);
   const [sending, setSending] = useState(false);
@@ -357,10 +357,10 @@ export default function Kontakt() {
                       style={{ appearance: "none", cursor: "pointer" }}
                     >
                       <option value="">Bitte wählen …</option>
-                      <option value="unter-100">Unter 100 m²</option>
-                      <option value="100-250">100 – 250 m²</option>
-                      <option value="250-500">250 – 500 m²</option>
-                      <option value="500+">Über 500 m²</option>
+                      <option value="Unter 100 m²">Unter 100 m²</option>
+                      <option value="100 – 250 m²">100 – 250 m²</option>
+                      <option value="250 – 500 m²">250 – 500 m²</option>
+                      <option value="Über 500 m²">Über 500 m²</option>
                     </select>
                   </div>
                   <div>
@@ -382,10 +382,10 @@ export default function Kontakt() {
                       style={{ appearance: "none", cursor: "pointer" }}
                     >
                       <option value="">Bitte wählen …</option>
-                      <option value="einmalig">Einmalig</option>
-                      <option value="woechentlich">Wöchentlich</option>
-                      <option value="2x-woche">2× pro Woche</option>
-                      <option value="taeglich">Täglich</option>
+                      <option value="Einmalig">Einmalig</option>
+                      <option value="Wöchentlich">Wöchentlich</option>
+                      <option value="2× pro Woche">2× pro Woche</option>
+                      <option value="Täglich">Täglich</option>
                     </select>
                   </div>
                 </div>

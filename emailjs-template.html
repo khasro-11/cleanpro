@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="x-apple-disable-message-reformatting" />
+<title>Neue Anfrage · {{from_name}}</title>
+<!--[if mso]>
+<style>* { font-family: Arial, sans-serif !important; }</style>
+<![endif]-->
+</head>
+<body style="margin:0;padding:0;background:#eef0f2;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased;color:#0e1f33;">
+
+<!-- Preheader -->
+<div style="display:none;max-height:0;overflow:hidden;font-size:1px;line-height:1px;color:#eef0f2;opacity:0;">
+  Neue Anfrage von {{from_name}} · {{object_type}} · {{flaeche}} · {{from_email}}
+</div>
+
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#eef0f2;padding:32px 12px;">
+  <tr>
+    <td align="center">
+
+      <table role="presentation" width="600" cellpadding="0" cellspacing="0" border="0" style="width:100%;max-width:600px;">
+
+        <!-- Top brand bar -->
+        <tr>
+          <td style="padding:0 8px 16px 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+              <tr>
+                <td align="left" style="font-size:15px;font-weight:700;color:#0e1f33;letter-spacing:-0.01em;">
+                  <span style="display:inline-block;width:18px;height:18px;background:#1f3a5f;border-radius:99px;vertical-align:middle;margin-right:8px;"></span>
+                  Nordiva Clean</span>
+                </td>
+                <td align="right" style="font-size:11px;color:#3a4a5e;letter-spacing:0.12em;text-transform:uppercase;font-weight:600;">
+                  Intern · Lead-Eingang
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Hero card (navy) -->
+        <tr>
+          <td style="padding:0 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#0e1f33" style="background:#0e1f33;border-radius:22px;color:#f5f7f8;">
+              <tr>
+                <td style="padding:32px 32px 28px 32px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="font-size:11px;font-weight:700;color:#7fb3d5;letter-spacing:0.14em;text-transform:uppercase;">
+                        <span style="display:inline-block;width:7px;height:7px;background:#22c55e;border-radius:99px;vertical-align:middle;margin-right:8px;"></span>
+                        Neue Anfrage
+                      </td>
+                      <td align="right" style="font-size:11px;color:rgba(245,247,248,0.55);letter-spacing:0.06em;font-weight:600;">
+                        {{submitted_at}}
+                      </td>
+                    </tr>
+                  </table>
+                  <div style="font-size:32px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;color:#ffffff;margin:18px 0 10px 0;">
+                    {{from_name}}
+                  </div>
+                  <div style="font-size:14px;color:rgba(245,247,248,0.7);margin:0 0 6px 0;">
+                    Objekttyp:
+                    <span style="display:inline-block;background:rgba(127,179,213,0.18);color:#7fb3d5;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;margin-left:4px;">
+                      {{object_type}}
+                    </span>
+                  </div>
+                  <div style="font-size:14px;color:rgba(245,247,248,0.7);margin:0 0 18px 0;">
+                    Größe:
+                    <span style="display:inline-block;background:rgba(127,179,213,0.18);color:#7fb3d5;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;margin-left:4px;">
+                      {{flaeche}}
+                    </span>
+                    &nbsp;·&nbsp; Frequenz:
+                    <span style="display:inline-block;background:rgba(127,179,213,0.18);color:#7fb3d5;padding:3px 10px;border-radius:99px;font-size:12px;font-weight:700;margin-left:4px;">
+                      {{frequenz}}
+                    </span>
+                  </div>
+
+                  <!-- Quick action buttons -->
+                  <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td style="padding-right:8px;">
+                        <a href="mailto:{{from_email}}" style="display:inline-block;background:#7fb3d5;color:#0e1f33;text-decoration:none;padding:11px 18px;border-radius:99px;font-size:13px;font-weight:700;letter-spacing:-0.01em;">
+                          ✉ Antworten
+                        </a>
+                      </td>
+                      <td>
+                        <a href="tel:{{from_phone}}" style="display:inline-block;background:rgba(245,247,248,0.08);color:#ffffff;text-decoration:none;padding:11px 18px;border-radius:99px;font-size:13px;font-weight:700;border:1px solid rgba(127,179,213,0.3);">
+                          ☏ Anrufen
+                        </a>
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+
+        <!-- Contact details card -->
+        <tr>
+          <td style="padding:0 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="background:#ffffff;border-radius:18px;border:1px solid rgba(14,31,51,0.08);">
+              <tr>
+                <td style="padding:24px 28px 8px 28px;">
+                  <div style="font-size:11px;font-weight:700;color:#1f3a5f;letter-spacing:0.14em;text-transform:uppercase;">
+                    Kontaktdaten
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td style="padding:0 28px 20px 28px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+
+                    <!-- Name -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Name</td>
+                            <td style="font-size:15px;color:#0e1f33;font-weight:600;">{{from_name}}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- E-Mail -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">E-Mail</td>
+                            <td style="font-size:15px;font-weight:600;">
+                              <a href="mailto:{{from_email}}" style="color:#1f3a5f;text-decoration:none;border-bottom:1px solid rgba(31,58,95,0.25);">{{from_email}}</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Telefon -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Telefon</td>
+                            <td style="font-size:15px;font-weight:600;">
+                              <a href="tel:{{from_phone}}" style="color:#1f3a5f;text-decoration:none;border-bottom:1px solid rgba(31,58,95,0.25);">{{from_phone}}</a>
+                            </td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Objekttyp -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Objekttyp</td>
+                            <td style="font-size:15px;color:#0e1f33;font-weight:600;">{{object_type}}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Objektgröße -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Objektgröße</td>
+                            <td style="font-size:15px;color:#0e1f33;font-weight:600;">{{flaeche}}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Frequenz -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Frequenz</td>
+                            <td style="font-size:15px;color:#0e1f33;font-weight:600;">{{frequenz}}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                    <!-- Wunsch-Starttermin -->
+                    <tr>
+                      <td style="padding:12px 0;border-top:1px solid rgba(14,31,51,0.08);">
+                        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                          <tr>
+                            <td width="140" style="font-size:11px;color:#3a4a5e;letter-spacing:0.1em;text-transform:uppercase;font-weight:700;vertical-align:top;padding-top:2px;">Starttermin</td>
+                            <td style="font-size:15px;color:#0e1f33;font-weight:600;">{{starttermin}}</td>
+                          </tr>
+                        </table>
+                      </td>
+                    </tr>
+
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+
+        <!-- Message card -->
+        <tr>
+          <td style="padding:0 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#ffffff" style="background:#ffffff;border-radius:18px;border:1px solid rgba(14,31,51,0.08);">
+              <tr>
+                <td style="padding:24px 28px;">
+                  <div style="font-size:11px;font-weight:700;color:#1f3a5f;letter-spacing:0.14em;text-transform:uppercase;margin-bottom:12px;">
+                    Nachricht des Kunden
+                  </div>
+                  <div style="font-size:15px;color:#0e1f33;line-height:1.6;background:#f5f7f8;border:1px solid rgba(14,31,51,0.06);border-radius:12px;padding:18px 20px;white-space:pre-wrap;">{{message}}</div>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>
+
+        <!-- SLA reminder (sky) -->
+        <tr>
+          <td style="padding:0 8px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" bgcolor="#7fb3d5" style="background:#7fb3d5;border-radius:18px;">
+              <tr>
+                <td style="padding:20px 28px;">
+                  <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+                    <tr>
+                      <td valign="middle">
+                        <div style="font-size:11px;font-weight:700;color:#162c48;letter-spacing:0.12em;text-transform:uppercase;margin-bottom:2px;">
+                          Antwort-SLA
+                        </div>
+                        <div style="font-size:16px;font-weight:800;color:#0e1f33;letter-spacing:-0.02em;">
+                          Innerhalb von 4 Stunden zurückrufen
+                        </div>
+                      </td>
+                      <td align="right" valign="middle" style="font-size:13px;color:#162c48;font-weight:700;">
+                        Mo–Fr · 7–19 Uhr
+                      </td>
+                    </tr>
+                  </table>
+                </td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+
+        <!-- Footer -->
+        <tr>
+          <td style="padding:24px 16px 8px 16px;font-size:11px;color:#7a8694;line-height:1.6;text-align:center;">
+            Automatische Benachrichtigung vom Kontakt­formular auf <span style="color:#1f3a5f;">Nordiva Clean</span>.<br/>
+            Nordiva Clean. · Bahnhofstraße . 21 · 59199 Bönen
+          </td>
+        </tr>
+
+      </table>
+    </td>
+  </tr>
+</table>
+
+</body>
+</html>
