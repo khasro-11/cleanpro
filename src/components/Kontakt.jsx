@@ -617,7 +617,7 @@ export default function Kontakt() {
             <ContactRow
               icon="calendar"
               label="Sprechzeit"
-              value="Mo–Fr · 7:00 – 19:00"
+              value="Mo–Fr · 08:00 – 18:00"
             />
             <ContactRow
               icon="building"
