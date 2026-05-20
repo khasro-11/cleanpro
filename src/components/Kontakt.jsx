@@ -281,7 +281,7 @@ export default function Kontakt() {
     <section id="kontakt" style={{ background: "#f5f7f8" }}>
       <div
         className="kontakt-outer"
-        style={{ maxWidth: 1280, margin: "0 auto", padding: "40px 40px" }}
+        style={{ maxWidth: 1280, margin: "0 auto", padding: "0 40px" }}
       >
         <div
           className="kontakt-card"
@@ -820,7 +820,7 @@ export default function Kontakt() {
 
         /* Desktop: grid areas */
         @media (min-width: 768px) {
-          .kontakt-outer { padding: 40px 40px !important; }
+          .kontakt-outer { padding: 0 40px !important; }
           .kontakt-card {
             display: grid;
             grid-template-columns: 1fr 1.05fr;
@@ -830,11 +830,11 @@ export default function Kontakt() {
               "info    form";
             column-gap: 56px;
             row-gap: 0;
-            padding: 56px;
+            padding: 12px 56px;
           }
           .kontakt-heading { grid-area: heading; align-self: start; }
           .kontakt-form    { grid-area: form; }
-          .kontakt-info    { grid-area: info; align-self: end; margin-top: 40px; }
+          .kontakt-info    { grid-area: info; align-self: end; margin-top: 12px; }
           .kontakt-h2 { font-size: clamp(36px, 3.5vw, 56px) !important; }
           .kontakt-subp { font-size: 17px !important; }
           .object-tiles { grid-template-columns: repeat(4, 1fr) !important; }
@@ -848,7 +848,7 @@ export default function Kontakt() {
 
         /* Mobile: flex column with reordering */
         @media (max-width: 767px) {
-          .kontakt-outer { padding: 24px 12px 0 !important; }
+          .kontakt-outer { padding: 0 12px !important; }
           .kontakt-card {
             display: flex;
             flex-direction: column;
