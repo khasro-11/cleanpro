@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { DayPicker } from "react-day-picker";
+import { de } from "date-fns/locale";
+import "react-day-picker/style.css";
 import { fadeUp, stagger, viewport } from "../utils/animations";
 
 const EMAILJS_SERVICE =
@@ -101,6 +104,88 @@ const objectTypes = [
   { id: "Airbnb", label: "Airbnb", icon: "key" },
   { id: "Andere", label: "Andere", icon: "spray" },
 ];
+
+function CalendarIcon() {
+  return (
+    <svg width={16} height={16} viewBox="0 0 24 24" fill="none"
+      stroke={NAVY} strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="5" width="18" height="16" rx="1"/>
+      <line x1="3" y1="10" x2="21" y2="10"/>
+      <line x1="8" y1="3" x2="8" y2="7"/>
+      <line x1="16" y1="3" x2="16" y2="7"/>
+    </svg>
+  );
+}
+
+function DatePickerField({ value, onChange }) {
+  const [open, setOpen] = useState(false);
+  const [selected, setSelected] = useState(undefined);
+  const ref = useRef(null);
+
+  useEffect(() => {
+    function onOutside(e) {
+      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
+    }
+    if (open) document.addEventListener("mousedown", onOutside);
+    return () => document.removeEventListener("mousedown", onOutside);
+  }, [open]);
+
+  const formatted = selected
+    ? selected.toLocaleDateString("de-DE", { day: "2-digit", month: "long", year: "numeric" })
+    : null;
+
+  const handleSelect = (date) => {
+    setSelected(date);
+    if (date) {
+      const y = date.getFullYear();
+      const m = String(date.getMonth() + 1).padStart(2, "0");
+      const d = String(date.getDate()).padStart(2, "0");
+      onChange(`${d}.${m}.${y}`);
+    } else {
+      onChange("");
+    }
+    setOpen(false);
+  };
+
+  return (
+    <div ref={ref} style={{ position: "relative" }}>
+      <button
+        type="button"
+        onClick={() => setOpen((o) => !o)}
+        className="form-input datepicker-btn"
+        style={{
+          display: "flex", alignItems: "center", justifyContent: "space-between",
+          cursor: "pointer", width: "100%", textAlign: "left",
+          color: selected ? INK : "#9aabbc",
+          fontFamily: "Manrope, sans-serif",
+        }}
+      >
+        <span style={{ fontSize: 14 }}>{formatted ?? "Datum auswählen …"}</span>
+        <CalendarIcon />
+      </button>
+
+      {open && (
+        <div className="datepicker-popup" style={{
+          position: "absolute", top: "calc(100% + 6px)", left: 0, zIndex: 200,
+          background: PAPER,
+          borderRadius: 18,
+          boxShadow: "0 2px 8px rgba(14,31,51,0.06), 0 16px 48px rgba(14,31,51,0.14)",
+          border: "1px solid rgba(14,31,51,0.08)",
+          padding: "12px 8px 8px",
+        }}>
+          <DayPicker
+            mode="single"
+            selected={selected}
+            onSelect={handleSelect}
+            locale={de}
+            weekStartsOn={1}
+            disabled={{ before: new Date() }}
+          />
+        </div>
+      )}
+    </div>
+  );
+}
 
 function ContactRow({ icon, label, value }) {
   return (
@@ -392,22 +477,18 @@ export default function Kontakt() {
 
                 {/* Wunsch-Starttermin */}
                 <div>
-                  <label
-                    htmlFor="starttermin"
+                  <div
                     style={{
-                      display: "block", fontSize: 11, fontWeight: 700,
+                      fontSize: 11, fontWeight: 700,
                       color: INK_SOFT, letterSpacing: "0.1em",
                       textTransform: "uppercase", marginBottom: 6,
                     }}
                   >
                     Wunsch-Starttermin (optional)
-                  </label>
-                  <input
-                    id="starttermin"
-                    type="date"
+                  </div>
+                  <DatePickerField
                     value={form.starttermin}
-                    onChange={update}
-                    className="form-input"
+                    onChange={(val) => setForm((f) => ({ ...f, starttermin: val }))}
                   />
                 </div>
 
@@ -714,6 +795,29 @@ export default function Kontakt() {
       </div>
 
       <style>{`
+        /* ── Date Picker ── */
+        .datepicker-btn { background: #f5f7f8; border: 1px solid rgba(14,31,51,0.10); border-radius: 10px; padding: 12px 14px; }
+        .datepicker-popup { min-width: 300px; }
+        .datepicker-popup .rdp-root {
+          --rdp-accent-color: #1f3a5f;
+          --rdp-accent-background-color: rgba(31,58,95,0.08);
+          --rdp-day-font: 600 13px/1 'Manrope', sans-serif;
+          --rdp-day_button-width: 36px;
+          --rdp-day_button-height: 36px;
+          --rdp-selected-border: none;
+          font-family: 'Manrope', sans-serif;
+          font-size: 13px;
+        }
+        .datepicker-popup .rdp-month_caption { font-weight: 800; font-size: 14px; color: #0e1f33; padding-bottom: 8px; }
+        .datepicker-popup .rdp-weekday { font-size: 11px; font-weight: 700; color: #3a4a5e; letter-spacing: 0.05em; text-transform: uppercase; }
+        .datepicker-popup .rdp-day_button { border-radius: 8px; font-weight: 600; color: #0e1f33; }
+        .datepicker-popup .rdp-day_button:hover:not([disabled]) { background: rgba(31,58,95,0.08); }
+        .datepicker-popup .rdp-selected .rdp-day_button { background: #1f3a5f !important; color: #f5f7f8 !important; font-weight: 700; }
+        .datepicker-popup .rdp-today .rdp-day_button { color: #1f3a5f; font-weight: 800; }
+        .datepicker-popup .rdp-disabled .rdp-day_button { color: rgba(14,31,51,0.25); }
+        .datepicker-popup .rdp-nav button { border-radius: 8px; color: #1f3a5f; }
+        .datepicker-popup .rdp-nav button:hover { background: rgba(31,58,95,0.08); }
+
         /* Desktop: grid areas */
         @media (min-width: 768px) {
           .kontakt-outer { padding: 40px 40px !important; }
