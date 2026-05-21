@@ -1,6 +1,5 @@
 import Nav from './components/Nav'
 import Hero from './components/Hero'
-import PuenktlichkeitsGarantie from './components/PuenktlichkeitsGarantie'
 import Services from './components/Services'
 import WarumKeinPreis from './components/WarumKeinPreis'
 import SocialProof from './components/SocialProof'
@@ -15,8 +14,7 @@ export default function App() {
     <>
       <Nav />
       <Hero />
-      <PuenktlichkeitsGarantie />
-      <Services />
+<Services />
       <WarumKeinPreis />
       <SocialProof />
       <Galerie />
