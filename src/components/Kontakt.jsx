@@ -846,26 +846,35 @@ export default function Kontakt() {
           .qualify-row { grid-template-columns: 1fr !important; }
         }
 
+        /* Mobile: label spacing */
+        @media (max-width: 767px) {
+          .kontakt-form-inner label,
+          .kontakt-form-inner > div > div:first-child {
+            margin-bottom: 3px !important;
+            font-size: 10px !important;
+          }
+        }
+
         /* Mobile: flex column with reordering */
         @media (max-width: 767px) {
-          .kontakt-outer { padding: 0 12px !important; }
+          .kontakt-outer { padding: 0 8px !important; }
           .kontakt-card {
             display: flex;
             flex-direction: column;
-            padding: 16px;
-            gap: 10px;
-            border-radius: 20px !important;
+            padding: 10px;
+            gap: 6px;
+            border-radius: 16px !important;
           }
           .kontakt-heading { order: 1; }
-          .kontakt-form    { order: 2; padding: 14px !important; }
-          .kontakt-info    { order: 3; padding: 16px !important; gap: 14px !important; }
-          .kontakt-h2 { font-size: 22px !important; }
-          .kontakt-subp { font-size: 12px !important; margin-top: 6px !important; }
-          .object-tiles { grid-template-columns: repeat(2, 1fr) !important; gap: 5px !important; }
-          .kontakt-tile { padding: 9px 6px !important; font-size: 11px !important; border-radius: 8px !important; gap: 4px !important; }
-          .kontakt-form-inner { gap: 10px !important; }
-          .kontakt-submit { padding: 10px 14px !important; font-size: 13px !important; margin-top: 2px !important; }
-          .form-input { padding: 8px 10px !important; font-size: 12px !important; }
+          .kontakt-form    { order: 2; padding: 10px !important; gap: 6px !important; border-radius: 14px !important; }
+          .kontakt-info    { order: 3; padding: 10px !important; gap: 10px !important; border-radius: 12px !important; }
+          .kontakt-h2 { font-size: 18px !important; margin-top: 4px !important; }
+          .kontakt-subp { font-size: 11px !important; margin-top: 4px !important; line-height: 1.4 !important; }
+          .object-tiles { grid-template-columns: repeat(4, 1fr) !important; gap: 4px !important; }
+          .kontakt-tile { padding: 6px 4px !important; font-size: 10px !important; border-radius: 7px !important; gap: 3px !important; }
+          .kontakt-form-inner { gap: 7px !important; }
+          .kontakt-submit { padding: 9px 12px !important; font-size: 12px !important; margin-top: 0 !important; border-radius: 9px !important; }
+          .form-input { padding: 7px 9px !important; font-size: 12px !important; border-radius: 8px !important; }
         }
       `}</style>
     </section>
