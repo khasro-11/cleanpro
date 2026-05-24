@@ -309,9 +309,9 @@ export default function Kontakt() {
             </motion.div>
             <motion.h2
               style={{
-                fontSize: "clamp(36px, 3.5vw, 56px)",
+                fontSize: "clamp(28px, 2.8vw, 44px)",
                 fontWeight: 800,
-                margin: "8px 0 0",
+                margin: "6px 0 0",
                 letterSpacing: "-0.035em",
                 color: INK,
                 lineHeight: 1.0,
@@ -323,11 +323,11 @@ export default function Kontakt() {
             </motion.h2>
             <motion.p
               style={{
-                fontSize: 17,
-                lineHeight: 1.55,
+                fontSize: 14,
+                lineHeight: 1.5,
                 color: "rgba(14,31,51,0.75)",
-                marginTop: 20,
-                maxWidth: 420,
+                marginTop: 12,
+                maxWidth: 380,
               }}
               variants={fadeUp}
               className="kontakt-subp"
@@ -343,10 +343,10 @@ export default function Kontakt() {
             style={{
               background: PAPER,
               borderRadius: 20,
-              padding: 32,
+              padding: 20,
               display: "flex",
               flexDirection: "column",
-              gap: 16,
+              gap: 12,
             }}
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -361,7 +361,7 @@ export default function Kontakt() {
               <form
                 onSubmit={handleSubmit}
                 className="kontakt-form-inner"
-                style={{ display: "flex", flexDirection: "column", gap: 16 }}
+                style={{ display: "flex", flexDirection: "column", gap: 12 }}
               >
                 {/* Object type selector */}
                 <div>
@@ -392,7 +392,7 @@ export default function Kontakt() {
                         className="kontakt-tile"
                         onClick={() => setObjekt(o.id)}
                         style={{
-                          padding: "12px 8px",
+                          padding: "8px 6px",
                           borderRadius: 10,
                           fontSize: 12,
                           fontWeight: 700,
@@ -603,7 +603,7 @@ export default function Kontakt() {
                     value={form.nachricht}
                     onChange={update}
                     className="form-input"
-                    style={{ resize: "none", minHeight: 80 }}
+                    style={{ resize: "none", minHeight: 60 }}
                   />
                 </div>
 
@@ -664,8 +664,8 @@ export default function Kontakt() {
                   disabled={sending}
                   className="kontakt-submit"
                   style={{
-                    padding: 16,
-                    marginTop: 6,
+                    padding: "11px 16px",
+                    marginTop: 4,
                     background: INK,
                     color: PAPER,
                     border: "none",
@@ -765,10 +765,10 @@ export default function Kontakt() {
             style={{
               background: "rgba(14,31,51,0.10)",
               borderRadius: 16,
-              padding: 24,
+              padding: 16,
               display: "flex",
               flexDirection: "column",
-              gap: 20,
+              gap: 14,
             }}
             variants={fadeUp}
             initial="hidden"
@@ -828,15 +828,15 @@ export default function Kontakt() {
             grid-template-areas:
               "heading form"
               "info    form";
-            column-gap: 56px;
+            column-gap: 40px;
             row-gap: 0;
-            padding: 12px 56px;
+            padding: 8px 40px;
           }
           .kontakt-heading { grid-area: heading; align-self: start; }
           .kontakt-form    { grid-area: form; }
-          .kontakt-info    { grid-area: info; align-self: end; margin-top: 12px; }
-          .kontakt-h2 { font-size: clamp(36px, 3.5vw, 56px) !important; }
-          .kontakt-subp { font-size: 17px !important; }
+          .kontakt-info    { grid-area: info; align-self: end; margin-top: 8px; }
+          .kontakt-h2 { font-size: clamp(28px, 2.8vw, 44px) !important; }
+          .kontakt-subp { font-size: 14px !important; }
           .object-tiles { grid-template-columns: repeat(4, 1fr) !important; }
         }
 
@@ -864,8 +864,8 @@ export default function Kontakt() {
           .object-tiles { grid-template-columns: repeat(2, 1fr) !important; gap: 5px !important; }
           .kontakt-tile { padding: 9px 6px !important; font-size: 11px !important; border-radius: 8px !important; gap: 4px !important; }
           .kontakt-form-inner { gap: 10px !important; }
-          .kontakt-submit { padding: 12px !important; font-size: 13px !important; margin-top: 2px !important; }
-          .form-input { padding: 10px 12px !important; font-size: 13px !important; }
+          .kontakt-submit { padding: 10px 14px !important; font-size: 13px !important; margin-top: 2px !important; }
+          .form-input { padding: 8px 10px !important; font-size: 12px !important; }
         }
       `}</style>
     </section>
