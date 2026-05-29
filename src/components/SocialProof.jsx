@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { fadeUp, stagger, viewport } from '../utils/animations'
+import { AGGREGATE, REVIEWS } from '../data/reviews'
 
 const INK = '#0e1f33'
 const INK_SOFT = '#3a4a5e'
@@ -28,32 +29,6 @@ function Stars({ count = 5, size = 16 }) {
   )
 }
 
-// TODO: Replace with real testimonials
-const testimonials = [
-  {
-    name: 'Maria K.',
-    role: 'Hausverwaltung Schulze, Bönen',
-    quote: 'Endlich ein Reinigungsservice, bei dem das Team immer pünktlich ist und wirklich konstant sauber arbeitet. Empfehlen wir seit zwei Jahren jedem Eigentümer weiter.',
-    stars: 5,
-    // TODO: Add photo — replace src with real image path
-    photo: null,
-  },
-  {
-    name: 'Thomas B.',
-    role: 'Praxisinhaber, Unna',
-    quote: 'Für unsere Zahnarztpraxis war es wichtig, einen verlässlichen Partner zu finden. Nordiva Clean hat vom ersten Besichtigungstermin an überzeugt — und der Festpreis gilt.',
-    stars: 5,
-    photo: null,
-  },
-  {
-    name: 'Sandra M.',
-    role: 'Airbnb-Gastgeberin, Kamen',
-    quote: 'Der Turnover klappt reibungslos — Wäsche, Endreinigung, Foto-Check. Ich werde immer rechtzeitig informiert. Meine Gäste loben die Sauberkeit in jeder Bewertung.',
-    stars: 5,
-    photo: null,
-  },
-]
-
 // TODO: Replace placeholder logos with real customer logos
 const customerLogos = [null, null, null, null, null]
 
@@ -75,8 +50,7 @@ export default function SocialProof() {
           </motion.h2>
         </motion.div>
 
-        {/* Google rating bar */}
-        {/* TODO: Replace with real Google rating widget or embed */}
+        {/* Google rating bar — zeigt Wertung nur wenn echte Daten in src/data/reviews.js eingetragen */}
         <motion.div
           className="sp-rating-bar"
           style={{
@@ -94,25 +68,29 @@ export default function SocialProof() {
           whileInView="visible"
           viewport={viewport}
         >
-          <div>
-            <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: '-0.04em', color: INK, lineHeight: 1 }}>5.0</div>
-            <Stars count={5} size={18} />
-          </div>
-          <div style={{ width: 1, height: 48, background: LINE }} />
-          <div>
-            {/* TODO: Replace static number with real review count from Google */}
-            <div style={{ fontSize: 15, fontWeight: 700, color: INK }}>Google-Bewertung</div>
-            <div style={{ fontSize: 13, color: INK_SOFT, marginTop: 2 }}>
-              {/* TODO: Insert real review count, e.g. "24 Bewertungen" */}
-              ★ Platzhalter — echte Bewertungsanzahl einfügen
-            </div>
-          </div>
-              <a
+          {AGGREGATE.ratingValue !== null && (
+            <>
+              <div>
+                <div style={{ fontSize: 40, fontWeight: 800, letterSpacing: '-0.04em', color: INK, lineHeight: 1 }}>{AGGREGATE.ratingValue}</div>
+                <Stars count={5} size={18} />
+              </div>
+              <div style={{ width: 1, height: 48, background: LINE }} />
+              <div>
+                <div style={{ fontSize: 15, fontWeight: 700, color: INK }}>Google-Bewertung</div>
+                {AGGREGATE.reviewCount > 0 && (
+                  <div style={{ fontSize: 13, color: INK_SOFT, marginTop: 2 }}>
+                    {AGGREGATE.reviewCount} Bewertungen
+                  </div>
+                )}
+              </div>
+            </>
+          )}
+          <a
             href="https://share.google/ztBRJrasaE3DadbzZ"
             target="_blank"
             rel="noopener noreferrer"
             style={{
-              marginLeft: 'auto',
+              marginLeft: AGGREGATE.ratingValue !== null ? 'auto' : '0',
               fontSize: 13,
               fontWeight: 700,
               color: NAVY,
@@ -126,61 +104,73 @@ export default function SocialProof() {
           </a>
         </motion.div>
 
-        {/* Testimonial cards */}
-        <motion.div
-          className="sp-grid"
-          style={{ display: 'grid', gap: 14 }}
-          variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
-        >
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              style={{
-                background: i === 0 ? NAVY : PAPER_WARM,
-                color: i === 0 ? PAPER : INK,
-                borderRadius: 20,
-                padding: 28,
-                display: 'flex',
-                flexDirection: 'column',
-                gap: 20,
-              }}
-              variants={fadeUp}
-            >
-              <Stars count={t.stars} size={14} />
-              <p style={{
-                fontSize: 15,
-                lineHeight: 1.65,
-                margin: 0,
-                flex: 1,
-                color: i === 0 ? 'rgba(245,247,248,0.88)' : INK_SOFT,
-                fontStyle: 'italic',
-              }}>
-                „{t.quote}"
-              </p>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderTop: `1px solid ${i === 0 ? 'rgba(255,255,255,0.12)' : LINE}`, paddingTop: 16 }}>
-                {/* TODO: Replace with real photo — set t.photo to actual image URL */}
-                <div style={{
-                  width: 40, height: 40, borderRadius: '50%',
-                  background: i === 0 ? 'rgba(127,179,213,0.3)' : LINE,
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 14, fontWeight: 800,
-                  color: i === 0 ? SKY : NAVY,
-                  flexShrink: 0,
+        {/* Testimonial cards — nur sichtbar wenn REVIEWS in src/data/reviews.js befüllt */}
+        {REVIEWS.length > 0 && (
+          <motion.div
+            className="sp-grid"
+            style={{ display: 'grid', gap: 14 }}
+            variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}
+          >
+            {REVIEWS.map((t, i) => (
+              <motion.div
+                key={i}
+                style={{
+                  background: i === 0 ? NAVY : PAPER_WARM,
+                  color: i === 0 ? PAPER : INK,
+                  borderRadius: 20,
+                  padding: 28,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 20,
+                }}
+                variants={fadeUp}
+              >
+                <Stars count={t.stars} size={14} />
+                <p style={{
+                  fontSize: 15,
+                  lineHeight: 1.65,
+                  margin: 0,
+                  flex: 1,
+                  color: i === 0 ? 'rgba(245,247,248,0.88)' : INK_SOFT,
+                  fontStyle: 'italic',
                 }}>
-                  {t.name.charAt(0)}
-                </div>
-                <div>
-                  <div style={{ fontSize: 14, fontWeight: 700, color: i === 0 ? PAPER : INK }}>
-                    {t.name}
+                  „{t.quote}"
+                </p>
+                <div style={{ display: 'flex', alignItems: 'center', gap: 12, borderTop: `1px solid ${i === 0 ? 'rgba(255,255,255,0.12)' : LINE}`, paddingTop: 16 }}>
+                  {t.photo ? (
+                    <img
+                      src={t.photo}
+                      alt={t.name}
+                      width={40}
+                      height={40}
+                      style={{ borderRadius: '50%', objectFit: 'cover', flexShrink: 0 }}
+                      loading="lazy"
+                    />
+                  ) : (
+                    <div style={{
+                      width: 40, height: 40, borderRadius: '50%',
+                      background: i === 0 ? 'rgba(127,179,213,0.3)' : LINE,
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                      fontSize: 14, fontWeight: 800,
+                      color: i === 0 ? SKY : NAVY,
+                      flexShrink: 0,
+                    }}>
+                      {t.name.charAt(0)}
+                    </div>
+                  )}
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 700, color: i === 0 ? PAPER : INK }}>
+                      {t.name}
+                    </div>
+                    <div style={{ fontSize: 12, color: i === 0 ? 'rgba(245,247,248,0.6)' : INK_SOFT, marginTop: 1 }}>
+                      {t.role}
+                    </div>
                   </div>
-                  <div style={{ fontSize: 12, color: i === 0 ? 'rgba(245,247,248,0.6)' : INK_SOFT, marginTop: 1 }}>
-                    {t.role}
-                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        )}
 
       </div>
 

@@ -53,7 +53,9 @@ export default function Galerie() {
           >
             <img
               src="/photos/fensterreinigung.png"
-              alt="Fensterreiniger mit Abzieher"
+              alt="Nordiva Clean – Fensterreinigung Bönen"
+              loading="lazy"
+              decoding="async"
               style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
             />
             <div style={{
@@ -77,7 +79,9 @@ export default function Galerie() {
             >
               <img
                 src="/photos/saugen.png"
-                alt="Gebäudereinigung – Teppichreinigung"
+                alt="Nordiva Clean – Gebäudereinigung & Teppichreinigung Bönen"
+                loading="lazy"
+                decoding="async"
               />
               <div style={{
                 position: 'absolute', top: 20, left: 20,
@@ -101,7 +105,9 @@ export default function Galerie() {
             >
               <img
                 src="/photos/treppenhaus-team.png"
-                alt=""
+                alt="Nordiva Clean Reinigungsteam – Treppenhausreinigung Bönen"
+                loading="lazy"
+                decoding="async"
                 style={{
                   position: 'absolute', inset: 0, width: '100%', height: '100%',
                   objectFit: 'cover', objectPosition: 'center',
