@@ -41,7 +41,7 @@ const services = [
     icon: 'key',
     title: 'Airbnb',
     valueLabel: 'Turnover in 3 Stunden.',
-    body: 'Wechsel, Wäsche, Foto-Check. Pauschalpreis pro Objekt.',
+    body: 'Wechsel, Wäsche, Foto-Check. Festpreisangebot auf Anfrage.',
     dark: false,
   },
   {

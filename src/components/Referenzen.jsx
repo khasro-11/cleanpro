@@ -26,7 +26,7 @@ export default function Referenzen() {
             Inhabergeführt aus Bönen
           </motion.h2>
           <motion.p className="text-teal-700/70 text-lg leading-relaxed2 max-w-xl mx-auto" variants={fadeUp}>
-            Persönlicher Ansprechpartner, zuverlässige Arbeit, transparente Preise — für Bönen und Umgebung.
+            Persönlicher Ansprechpartner, zuverlässige Arbeit, pünktliche Abrechnung — für Bönen und Umgebung.
           </motion.p>
         </motion.div>
 
