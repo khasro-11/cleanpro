@@ -6,7 +6,7 @@
 // Solange REVIEWS leer ist, wird weder Bewertungsanzahl noch Schema ausgegeben.
 
 export const AGGREGATE = {
-  ratingValue: 5.0, // TODO: echten Wert eintragen, z.B. "5.0"
+  ratingValue: "5.0", // TODO: echten Wert eintragen, z.B. "5.0"
   reviewCount: 14, // TODO: echte Anzahl eintragen, z.B. 14
 };
 
