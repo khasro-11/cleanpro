@@ -22,9 +22,9 @@
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: clip; }
 body {
-  margin: 0;
+  margin: 0; overflow-x: hidden;
   background: var(--bg);
   color: var(--ink);
   font-family: "Plus Jakarta Sans", system-ui, sans-serif;
@@ -237,7 +237,7 @@ textarea { resize: vertical; min-height: 88px; }
 .form-done p { color: var(--ink-soft); margin: 0; font-size: 15px; }
 
 /* KONTAKT OPTIONS */
-.kopt-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; }
+.kopt-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 18px; }
 .kopt { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); padding: 26px; text-align: left; transition: .2s; display: block; }
 .kopt:hover { transform: translateY(-3px); box-shadow: var(--shadow); border-color: var(--line-2); }
 .kopt .ic { width: 46px; height: 46px; border-radius: 12px; background: var(--green-tint); display: grid; place-items: center; color: var(--green-deep); margin-bottom: 16px; }
@@ -303,36 +303,60 @@ footer.site { background: var(--bg-soft); border-top: 1px solid var(--line); pad
   .nav-links { display: none; }
   .nav-tel { display: none; }
   .nav-burger { display: flex; }
-  .hero-grid { grid-template-columns: 1fr; gap: 36px; }
-  .hero-media { order: -1; max-width: 440px; }
-  .hero-photo { aspect-ratio: 16/12; }
-  .stats-grid { grid-template-columns: 1fr 1fr; gap: 30px 22px; }
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hero-media { order: -1; max-width: 540px; width: 100%; margin: 0 auto; }
+  .hero-photo { aspect-ratio: 16/9; }
+  .stats-grid { grid-template-columns: 1fr 1fr; gap: 28px 22px; }
   .svc-grid { grid-template-columns: 1fr 1fr; }
+  .svc { min-width: 0; }
+  /* center orphan last card in 2-col services grid */
+  .svc:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 10px); justify-self: center; }
   .proc-grid { grid-template-columns: 1fr 1fr; gap: 34px 22px; }
+  .proc-step { min-width: 0; }
   .proc-step .pic::after { display: none !important; }
   .ben-grid { grid-template-columns: 1fr 1fr; }
+  .ben { min-width: 0; }
   .rev-grid { grid-template-columns: 1fr; }
   .quote-grid { grid-template-columns: 1fr; gap: 40px; }
   .kopt-grid { grid-template-columns: 1fr 1fr; }
+  /* center orphan last card in 2-col contact grid */
+  .kopt:last-child:nth-child(odd) { grid-column: 1 / -1; max-width: calc(50% - 9px); justify-self: center; }
+  .kopt { min-width: 0; }
   .faq-grid { grid-template-columns: 1fr; gap: 24px; }
   .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
   .callbar { display: flex; }
-  body { padding-bottom: 70px; }
+  body { padding-bottom: 76px; }
 }
+
+/* Hide nav CTA & logo subtitle at small screens — drawer handles navigation */
+@media (max-width: 640px) {
+  .logo span { display: none; }
+  .nav-right .btn { display: none; }
+}
+
 @media (max-width: 560px) {
-  .wrap { padding: 0 18px; }
-  section { padding: 62px 0; }
+  .wrap { padding: 0 16px; }
+  section { padding: 56px 0; }
+  .hero { padding: 24px 0 0; }
+  .stats { padding: 24px 0 8px; }
   .svc-grid { grid-template-columns: 1fr; }
+  .svc:last-child:nth-child(odd) { grid-column: unset; max-width: unset; justify-self: unset; }
   .ben-grid { grid-template-columns: 1fr; }
   .proc-grid { grid-template-columns: 1fr; }
   .kopt-grid { grid-template-columns: 1fr; }
+  .kopt:last-child:nth-child(odd) { grid-column: unset; max-width: unset; justify-self: unset; }
   .row2 { grid-template-columns: 1fr; }
   .opt-grid { grid-template-columns: 1fr; }
   .foot-grid { grid-template-columns: 1fr; }
-  .hero-badge { left: auto; right: 14px; }
-  .band-in { padding: 34px 28px; }
-  .final { padding: 48px 26px; }
-}
-@media (max-width: 560px) {
+  .hero-media { max-width: 100%; margin: 0; }
+  .hero-photo { aspect-ratio: 4/3; }
+  .hero-badge { left: auto; right: 12px; }
+  .hero-chips a { font-size: 13px; padding: 8px 13px; }
+  .sec-head p { font-size: 16px; }
+  .band-in { padding: 32px 24px; }
+  .final { padding: 44px 24px; border-radius: 18px; }
+  .formcard { padding: 22px 18px; }
   .sb .lab { display: none; }
+  .btn-lg { padding: 15px 22px; font-size: 15px; }
+  .hero-actions { flex-direction: column; align-items: flex-start; gap: 12px; }
 }

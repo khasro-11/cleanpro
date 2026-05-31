@@ -45,6 +45,7 @@ export default function App() {
       <FAQ />
       <FinalCTA />
       <Footer />
+      <MobileCallBar />
     </>
   );
 }
