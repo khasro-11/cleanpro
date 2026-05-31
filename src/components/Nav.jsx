@@ -19,6 +19,7 @@ export default function Nav() {
       const el = document.getElementById(id)
       if (!el) return
       el.scrollIntoView({ behavior: 'smooth' })
+      if (el.classList.contains('rv')) el.classList.add('in')
       el.querySelectorAll('.rv').forEach(rv => rv.classList.add('in'))
     }, 350)
   }
@@ -40,7 +41,7 @@ export default function Nav() {
             <a href="#faq">FAQ</a>
           </div>
           <div className="nav-right">
-            <a href="tel:+4915510057038" className="nav-tel" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px' }}>
+            <a href="tel:+4915510057038" className="nav-tel">
               <PhoneIcon size={16} />0155 1005 7038
             </a>
             <a href="#kostenvoranschlag" className="btn btn-green" style={{ padding: '11px 20px' }}>Kostenvoranschlag</a>
@@ -61,7 +62,7 @@ export default function Nav() {
         <a href="tel:+4915510057038" style={{ color: 'var(--green-deep)', border: 0, display: 'flex', alignItems: 'center', gap: '10px' }} onClick={close}>
           <PhoneIcon size={20} />0155 1005 7038
         </a>
-        <button className="btn btn-green" style={{ border: 0, cursor: 'pointer', textAlign: 'center' }} onClick={() => closeAndScrollTo('kostenvoranschlag')}>Kostenvoranschlag anfordern</button>
+        <button className="btn btn-green" style={{ border: 0, cursor: 'pointer', textAlign: 'center' }} onClick={() => closeAndScrollTo('formcard')}>Kostenvoranschlag anfordern</button>
       </div>
     </>
   )

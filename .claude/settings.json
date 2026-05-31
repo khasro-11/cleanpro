@@ -7,7 +7,8 @@
       "Bash(curl -s -o /dev/null -w \"%{http_code} %{redirect_url}\" http://localhost:3000/gebaeudereinigung-boenen/)",
       "Bash(curl -s http://localhost:3000/gebaeudereinigung-boenen/)",
       "Bash(xargs sed -i '' 's/Nordiva Gebäudereinigung/Nordiva Gebäudereinigung/g')",
-      "Bash(node screenshot.mjs http://localhost:3000 desktop)"
+      "Bash(node screenshot.mjs http://localhost:3000 desktop)",
+      "Bash(node screenshot.mjs http://localhost:3000 desktop-full)"
     ]
   }
 }

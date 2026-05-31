@@ -166,7 +166,7 @@ export default function Kostenvoranschlag() {
             </div>
           </div>
 
-          <div className="formcard rv">
+          <div id="formcard" className="formcard rv">
             {/* Steps bar */}
             <div className="steps-bar">
               {[1, 2, 3].map((n, i) => (
