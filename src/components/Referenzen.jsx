@@ -21,7 +21,7 @@ export default function Referenzen() {
       <div className="max-w-6xl mx-auto px-6 lg:px-8">
 
         <motion.div className="text-center mb-16" variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}>
-          <motion.span className="text-teal-600 text-sm font-semibold tracking-widest uppercase mb-3 block" variants={fadeUp}>Nordiva Clean Gebäudeservice</motion.span>
+          <motion.span className="text-teal-600 text-sm font-semibold tracking-widest uppercase mb-3 block" variants={fadeUp}>Nordiva Gebäudereinigung</motion.span>
           <motion.h2 className="font-display text-3xl sm:text-4xl lg:text-5xl font-bold text-teal-950 tracking-tighter2 mb-4" variants={fadeUp}>
             Inhabergeführt aus Bönen
           </motion.h2>
