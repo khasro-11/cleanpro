@@ -329,7 +329,7 @@ export default function Kostenvoranschlag() {
                     <span>
                       Ich habe die{" "}
                       <a
-                        href="/public/datenschutz.html"
+                        href="/datenschutz.html"
                         style={{ color: "var(--green-deep)", fontWeight: 700 }}
                       >
                         Datenschutzerklärung
