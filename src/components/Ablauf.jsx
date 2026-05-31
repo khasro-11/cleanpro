@@ -1,115 +1,64 @@
-import { motion } from 'framer-motion'
-import { fadeUp, stagger, viewport } from '../utils/animations'
-
-const INK = '#0e1f33'
-const SKY = '#7fb3d5'
-const PAPER = '#f5f7f8'
-
-const steps = [
-  { n: 1, t: 'Kurze Anfrage',   body: 'Online-Formular oder Anruf. 60 Sekunden.' },
-  { n: 2, t: 'Vor-Ort-Termin',  body: 'Wir kommen zur kostenlosen Besichtigung.' },
-  { n: 3, t: 'Festes Team',     body: 'Sie bekommen feste Gesichter zugeteilt.' },
-  { n: 4, t: 'Monatsbericht',   body: 'Fotos, Stunden, Eigenkontrolle inklusive.' },
-]
-
 export default function Ablauf() {
   return (
-    <section id="ablauf" style={{ background: PAPER }}>
-      <div className="ablauf-container" style={{ maxWidth: 1280, margin: '0 auto' }}>
-        <div style={{ background: INK, color: PAPER, borderRadius: 28, position: 'relative', overflow: 'hidden' }} className="ablauf-card">
-
-          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewport}>
-            <motion.div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: 16 }} className="ablauf-header" variants={fadeUp}>
-              <div>
-                <div style={{ fontSize: 12, fontWeight: 700, color: SKY, letterSpacing: '0.12em', textTransform: 'uppercase' }}>Ablauf</div>
-                <h2 className="ablauf-heading" style={{ fontWeight: 800, margin: '8px 0 0', letterSpacing: '-0.035em', lineHeight: 1.05 }}>
-                  Vom Anruf zum sauberen Objekt<br />
-                  in <span style={{ color: SKY }}>vier Schritten.</span>
-                </h2>
-              </div>
-            </motion.div>
-
-            {/* Steps */}
-            <div className="steps-grid" style={{ position: 'relative' }}>
-              {/* Desktop connector line */}
-              <div className="steps-connector" style={{ position: 'absolute', top: 27, left: '12.5%', right: '12.5%', height: 1, borderTop: '1px dashed rgba(127,179,213,0.4)', pointerEvents: 'none' }} />
-
-              {steps.map(s => (
-                <motion.div key={s.n} className="step-item" variants={fadeUp}>
-                  <div className="step-num" style={{ background: SKY, color: INK, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 800, position: 'relative', zIndex: 1, flexShrink: 0 }}>
-                    {s.n}
-                  </div>
-                  <div className="step-text">
-                    <div className="step-title" style={{ fontWeight: 800, letterSpacing: '-0.02em' }}>{s.t}</div>
-                    <div className="step-body" style={{ color: 'rgba(245,247,248,0.65)', lineHeight: 1.5 }}>{s.body}</div>
-                  </div>
-                </motion.div>
-              ))}
+    <section id="ablauf" className="proc">
+      <div className="wrap">
+        <div className="sec-head center rv">
+          <span className="eyebrow" style={{ margin: '0 auto' }}>So einfach geht's</span>
+          <h2>In vier Schritten zum sauberen Objekt.</h2>
+          <p>Kein langes Hin und Her. Vom ersten Anruf bis zum festen Team vergehen oft nur wenige Tage.</p>
+        </div>
+        <div className="proc-grid rv">
+          <div className="proc-step">
+            <div className="pic">
+              <span className="pn">1</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <path d="M9 5h6M9 5a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2" />
+                <path d="M9 5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2" />
+                <path d="M9 12h6M9 16h4" />
+              </svg>
             </div>
+            <h4>Bedarf nennen</h4>
+            <p>Sagen Sie uns kurz, welches Objekt und welche Leistungen Sie brauchen — online oder am Telefon.</p>
+          </div>
 
-            <motion.div style={{ display: 'flex', justifyContent: 'center' }} className="ablauf-cta" variants={fadeUp}>
-              <motion.a
-                href="#kontakt"
-                style={{ background: SKY, color: INK, padding: '14px 28px', borderRadius: 999, fontWeight: 700, fontSize: 14, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 8 }}
-                whileHover={{ scale: 1.04, y: -1 }}
-                whileTap={{ scale: 0.97 }}
-                transition={{ type: 'spring', stiffness: 400, damping: 20 }}
-              >
-                Jetzt kostenlos anfragen →
-              </motion.a>
-            </motion.div>
-          </motion.div>
+          <div className="proc-step">
+            <div className="pic">
+              <span className="pn">2</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <path d="M12 21s-7-5.2-7-11a7 7 0 0 1 14 0c0 5.8-7 11-7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+            </div>
+            <h4>Kostenlos besichtigen</h4>
+            <p>Wir kommen unverbindlich vorbei, schauen uns alles an und besprechen Ihre Wünsche vor Ort.</p>
+          </div>
+
+          <div className="proc-step">
+            <div className="pic">
+              <span className="pn">3</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <path d="M14 3v5h5" />
+                <path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z" />
+                <path d="M9 14l2 2 4-4" />
+              </svg>
+            </div>
+            <h4>Festpreis erhalten</h4>
+            <p>Innerhalb von 24 Stunden bekommen Sie ein transparentes Angebot — schriftlich, ohne versteckte Kosten.</p>
+          </div>
+
+          <div className="proc-step">
+            <div className="pic">
+              <span className="pn">4</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7">
+                <path d="M5 13l4 4L19 7" />
+                <path d="M3 21c2-1 4-1 6 0M15 4c2-1 4-1 6 0" />
+              </svg>
+            </div>
+            <h4>Team startet</h4>
+            <p>Festes Team, feste Termine, monatlicher Foto-Bericht. Sie lehnen sich zurück, wir kümmern uns.</p>
+          </div>
         </div>
       </div>
-
-      <style>{`
-        /* Tablet: 2×2 grid */
-        @media (min-width: 768px) and (max-width: 1023px) {
-          .ablauf-container { padding: 24px 24px; }
-          .ablauf-card { padding: 36px; }
-          .ablauf-heading { font-size: clamp(28px, 3.5vw, 40px); }
-          .ablauf-header { margin-bottom: 32px; }
-          .steps-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-          .step-item { display: grid; grid-template-columns: 48px 1fr; gap: 14px; align-items: flex-start; padding-right: 0 !important; }
-          .step-num { width: 48px; height: 48px; border-radius: 99px; font-size: 18px; }
-          .step-title { font-size: 17px; margin-top: 0; }
-          .step-body { font-size: 13px; margin-top: 6px; }
-          .step-text { flex: 1; }
-          .ablauf-cta { margin-top: 36px; }
-          .steps-connector { display: none !important; }
-        }
-
-        /* Desktop: 4-column */
-        @media (min-width: 1024px) {
-          .ablauf-container { padding: 40px 40px; }
-          .ablauf-card { padding: 56px; }
-          .ablauf-heading { font-size: clamp(32px, 3.5vw, 52px); }
-          .ablauf-header { margin-bottom: 48px; }
-          .steps-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; }
-          .step-item { display: flex; flex-direction: column; padding-right: 24px; }
-          .step-num { width: 56px; height: 56px; border-radius: 99px; font-size: 22px; }
-          .step-title { font-size: 22px; margin-top: 24px; }
-          .step-body { font-size: 14px; margin-top: 8px; }
-          .step-text { flex: 1; }
-          .ablauf-cta { margin-top: 48px; }
-          .steps-connector { display: block; }
-        }
-
-        /* Mobile */
-        @media (max-width: 767px) {
-          .ablauf-container { padding: 32px 12px 0; }
-          .ablauf-card { padding: 28px; border-radius: 22px !important; }
-          .ablauf-heading { font-size: 28px; }
-          .ablauf-header { margin-bottom: 24px; }
-          .steps-grid { display: grid; grid-template-columns: 1fr; gap: 14px; }
-          .step-item { display: grid; grid-template-columns: 44px 1fr; gap: 14px; align-items: flex-start; padding-right: 0 !important; }
-          .step-num { width: 44px; height: 44px; border-radius: 99px; font-size: 18px; }
-          .step-title { font-size: 16px; margin-top: 0; }
-          .step-body { font-size: 13px; margin-top: 4px; }
-          .ablauf-cta { margin-top: 28px; }
-          .steps-connector { display: none !important; }
-        }
-      `}</style>
     </section>
   )
 }

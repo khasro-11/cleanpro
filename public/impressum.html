@@ -1,274 +1,394 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Impressum – Nordiva Clean Gebäudeservice</title>
+  <title>Impressum – Nordiva Gebäudereinigung</title>
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://nordiva-clean.de/impressum.html" />
-  <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
-  <meta name="theme-color" content="#0e1f33" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#2b90d9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap&font-display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:      #0e1f33;
-      --ink-soft: #3a4a5e;
-      --sky:      #7fb3d5;
-      --paper:    #f5f7f8;
-      --paper-2:  #eef1f3;
-      --border:   rgba(14,31,51,0.09);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --green: #2b90d9;
+      --green-deep: #1d6fb0;
+      --green-tint: #e8f4fc;
+      --green-tint-2: #d2e9f8;
+      --ink: #15202b;
+      --ink-soft: #51606e;
+      --ink-faint: #8a96a3;
+      --bg: #ffffff;
+      --bg-soft: #f4f7fa;
+      --line: #e3e9ef;
+      --line-2: #d6dee7;
+      --radius: 16px;
+      --shadow: 0 2px 4px rgba(20, 28, 40, .04), 0 14px 34px -18px rgba(20, 28, 40, .18);
+      --maxw: 1180px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Manrope', 'Inter', system-ui, sans-serif;
-      background: var(--paper);
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: var(--bg);
       color: var(--ink);
-      line-height: 1.7;
+      line-height: 1.6;
+      font-size: 17px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    .nav {
-      position: fixed;
-      top: 12px; left: 12px; right: 12px;
-      z-index: 50;
+    ::selection {
+      background: var(--green);
+      color: #fff;
     }
-    .nav-inner {
-      background: var(--ink);
-      border-radius: 999px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 20px -16px rgba(20, 32, 40, .3);
+    }
+
+    .nav-in {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
+      height: 72px;
     }
-    .nav-brand {
+
+    .logo {
       display: flex;
-      flex-direction: column;
-      gap: 1px;
-      text-decoration: none;
-    }
-    .nav-brand-name {
-      font-family: 'Manrope', sans-serif;
-      font-size: 15px;
+      align-items: center;
+      gap: 9px;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      color: #f5f7f8;
-      line-height: 1;
+      font-size: 20px;
+      letter-spacing: -.03em;
     }
-    .nav-brand-sub {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(245,247,248,0.55);
+
+    .logo .mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
     }
-    .nav-back {
-      background: var(--sky);
-      color: var(--ink);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-weight: 700;
+
+    .logo b {
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--ink-faint);
+      font-weight: 600;
       font-size: 13px;
-      text-decoration: none;
+      letter-spacing: 0;
+    }
+
+    .btn-back {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
-    }
-    .nav-back:hover { transform: translateY(-1px) scale(1.03); }
-    .nav-back:active { transform: scale(0.97); }
-    .nav-back:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
-
-    /* ── PAGE ── */
-    .page {
-      max-width: 720px;
-      margin: 0 auto;
-      padding: 120px 24px 80px;
-    }
-
-    /* ── HERO ── */
-    .page-eyebrow {
-      font-size: 11px;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 10px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sky);
-      margin-bottom: 12px;
-    }
-    .page-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 700;
+      font-size: 14px;
+      background: var(--bg-soft);
       color: var(--ink);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
+      border: 1.5px solid var(--line-2);
+      transition: transform .18s ease, border-color .18s, background .18s;
+    }
+
+    .btn-back:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    .btn-back:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    /* PAGE */
+    .page {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 64px 28px 80px;
+    }
+
+    .page-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-tint);
+      color: var(--green-deep);
+      font-size: 13px;
+      font-weight: 700;
+      padding: 7px 14px;
+      border-radius: 30px;
+      letter-spacing: .01em;
+      margin-bottom: 20px;
+    }
+
+    .page-eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .page-title {
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 52px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--green-deep);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 14px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+    }
+
+    .card h3 {
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -.015em;
+      margin-top: 24px;
       margin-bottom: 8px;
     }
-    .page-subtitle {
-      font-size: 15px;
-      color: var(--ink-soft);
-      margin-bottom: 48px;
-    }
 
-    /* ── DIVIDER ── */
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 40px 0;
-    }
-
-    /* ── SECTIONS ── */
-    .section { margin-bottom: 40px; }
-    .section:last-child { margin-bottom: 0; }
-
-    .section-title {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--sky);
-      margin-bottom: 16px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px 32px;
-      box-shadow:
-        0 1px 2px rgba(14,31,51,0.04),
-        0 4px 16px rgba(14,31,51,0.07),
-        0 16px 40px rgba(14,31,51,0.04);
-    }
-
-    .card h2 {
-      font-family: 'Manrope', sans-serif;
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 14px;
-      letter-spacing: -0.02em;
+    .card h3:first-child {
+      margin-top: 0;
     }
 
     .card p,
     .card address {
       font-size: 15px;
       color: var(--ink-soft);
+      line-height: 1.75;
+      margin-bottom: 10px;
       font-style: normal;
-      line-height: 1.8;
+    }
+
+    .card p:last-child,
+    .card address:last-child {
+      margin-bottom: 0;
     }
 
     .card a {
-      color: var(--ink);
+      color: var(--green-deep);
       text-decoration: underline;
-      text-decoration-color: var(--sky);
+      text-decoration-color: var(--green-tint-2);
       text-underline-offset: 3px;
-      transition: color 0.2s ease;
-    }
-    .card a:hover { color: #2a7fa8; }
-    .card a:focus-visible { outline: 2px solid var(--sky); border-radius: 2px; }
-
-    .card .placeholder {
-      display: inline-block;
-      background: rgba(127,179,213,0.15);
-      border: 1.5px dashed rgba(127,179,213,0.6);
-      border-radius: 6px;
-      padding: 2px 10px;
-      font-size: 13px;
       font-weight: 600;
-      color: #2a7fa8;
-      letter-spacing: 0.02em;
+      transition: color .18s, text-decoration-color .18s;
     }
 
+    .card a:hover {
+      color: var(--green);
+      text-decoration-color: var(--green);
+    }
+
+    .card a:focus-visible {
+      outline: 2px solid var(--green);
+      border-radius: 3px;
+    }
+
+    /* INFO ROWS */
     .info-row {
       display: flex;
-      gap: 12px;
-      align-items: flex-start;
-      margin-bottom: 10px;
+      gap: 16px;
+      align-items: baseline;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
     }
-    .info-row:last-child { margin-bottom: 0; }
+
+    .info-row:first-child {
+      padding-top: 0;
+    }
+
+    .info-row:last-child {
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
     .info-label {
       font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.06em;
+      letter-spacing: .06em;
       text-transform: uppercase;
-      color: var(--ink);
-      opacity: 0.45;
-      min-width: 88px;
+      color: var(--ink-faint);
+      min-width: 96px;
+      flex-shrink: 0;
       padding-top: 2px;
     }
+
     .info-value {
       font-size: 15px;
       color: var(--ink-soft);
       line-height: 1.6;
     }
 
-    /* ── DISCLAIMER BLOCKS ── */
-    .disclaimer { margin-bottom: 28px; }
-    .disclaimer:last-child { margin-bottom: 0; }
-    .disclaimer h3 {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--ink);
-      margin-bottom: 8px;
-      letter-spacing: -0.01em;
+    /* PLACEHOLDER */
+    .placeholder {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--green-tint);
+      color: var(--green-deep);
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 6px;
+      border: 1px dashed var(--green-tint-2);
     }
-    .disclaimer p {
+
+    /* DIVIDER */
+    .divider {
+      height: 1px;
+      background: var(--line);
+      margin: 12px 0 28px;
+    }
+
+    /* FOOTER */
+    .site-footer {
+      border-top: 1px solid var(--line);
+      padding: 28px;
+      text-align: center;
       font-size: 14px;
       color: var(--ink-soft);
-      line-height: 1.75;
     }
 
-    /* ── FOOTER ── */
-    .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
-      text-align: center;
-      font-size: 13px;
-      color: var(--ink-soft);
-    }
     .site-footer a {
       color: var(--ink-soft);
-      text-decoration: none;
-      transition: color 0.2s ease;
+      font-weight: 600;
+      transition: color .18s;
     }
-    .site-footer a:hover { color: var(--ink); }
+
+    .site-footer a:hover {
+      color: var(--ink);
+    }
+
+    .site-footer .sep {
+      margin: 0 8px;
+      color: var(--line-2);
+    }
 
     @media (max-width: 600px) {
-      .card { padding: 22px 20px; }
-      .info-row { flex-direction: column; gap: 2px; }
-      .info-label { min-width: unset; }
+      .card {
+        padding: 22px 20px;
+      }
+
+      .page {
+        padding: 44px 20px 64px;
+      }
+
+      .info-row {
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .info-label {
+        min-width: unset;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand" aria-label="Nordiva Clean Startseite">
-        <span class="nav-brand-name">Nordiva Clean</span>
-        <span class="nav-brand-sub">Gebäudeservice</span>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-in">
+      <a href="/" class="logo" aria-label="Nordiva Startseite">
+        <span class="mark">N</span>
+        <b>Nordiva</b>
+        <span>Gebäudereinigung</span>
       </a>
-      <a href="/" class="nav-back">← Startseite</a>
+      <a href="/" class="btn-back">← Startseite</a>
     </div>
-  </div>
+  </nav>
 
-  <!-- CONTENT -->
   <main class="page">
 
     <p class="page-eyebrow">Rechtliche Angaben</p>
     <h1 class="page-title">Impressum</h1>
     <p class="page-subtitle">Angaben gemäß § 5 TMG</p>
 
-    <!-- Anbieter -->
     <section class="section" aria-labelledby="anbieter">
-      <p class="section-title" id="anbieter">Anbieter</p>
+      <p class="section-label" id="anbieter">Anbieter</p>
       <div class="card">
         <div class="info-row">
           <span class="info-label">Inhaber</span>
@@ -280,7 +400,7 @@
         </div>
         <div class="info-row">
           <span class="info-label">Firma</span>
-          <span class="info-value">Nordiva Clean Gebäudeservice</span>
+          <span class="info-value">Nordiva Gebäudereinigung</span>
         </div>
         <div class="info-row">
           <span class="info-label">Anschrift</span>
@@ -289,9 +409,8 @@
       </div>
     </section>
 
-    <!-- Kontakt -->
     <section class="section" aria-labelledby="kontakt">
-      <p class="section-title" id="kontakt">Kontakt</p>
+      <p class="section-label" id="kontakt">Kontakt</p>
       <div class="card">
         <div class="info-row">
           <span class="info-label">Telefon</span>
@@ -299,32 +418,29 @@
         </div>
         <div class="info-row">
           <span class="info-label">E-Mail</span>
-          <span class="info-value"><a href="mailto:nordivaclean@gmail.com">nordivaclean@gmail.com</a></span>
+          <span class="info-value"><a href="mailto:nordivaclean@gmail.com">info@nordiva-clean.de</a></span>
         </div>
       </div>
     </section>
 
-    <!-- Steuer -->
     <section class="section" aria-labelledby="steuer">
-      <p class="section-title" id="steuer">Steuerliche Angaben</p>
+      <p class="section-label" id="steuer">Steuerliche Angaben</p>
       <div class="card">
         <div class="info-row">
           <span class="info-label">USt-IdNr.</span>
           <span class="info-value"><span class="placeholder">wird nachgetragen</span></span>
         </div>
-        <p style="margin-top:14px; font-size:13px; color:rgba(58,74,94,0.6);">
+        <p style="margin-top:16px; font-size:13px; color:var(--ink-faint);">
           Die Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG wird nach Erteilung durch das Finanzamt ergänzt.
         </p>
       </div>
     </section>
 
-    <!-- Verantwortlich -->
     <section class="section" aria-labelledby="verantwortlich">
-      <p class="section-title" id="verantwortlich">Verantwortlich für den Inhalt</p>
+      <p class="section-label" id="verantwortlich">Verantwortlich für den Inhalt</p>
       <div class="card">
         <p>Gemäß § 55 Abs. 2 RStV verantwortlich für journalistisch-redaktionelle Inhalte:</p>
-        <br>
-        <address>
+        <address style="margin-top:12px;">
           Dulstan Kutna<br>
           Bahnhofstraße 21<br>
           59199 Bönen
@@ -334,89 +450,80 @@
 
     <div class="divider"></div>
 
-    <!-- Streitschlichtung -->
     <section class="section" aria-labelledby="streit">
-      <p class="section-title" id="streit">Streitschlichtung</p>
+      <p class="section-label" id="streit">Streitschlichtung</p>
       <div class="card">
-        <div class="disclaimer">
-          <h3>EU-Streitschlichtung</h3>
-          <p>
-            Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
-            <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
-              https://ec.europa.eu/consumers/odr/
-            </a>.<br>
-            Unsere E-Mail-Adresse finden Sie oben im Impressum.
-          </p>
-        </div>
-        <div class="disclaimer">
-          <h3>Verbraucherstreitbeilegung</h3>
-          <p>
-            Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
-            Verbraucherschlichtungsstelle teilzunehmen.
-          </p>
-        </div>
+        <h3>EU-Streitschlichtung</h3>
+        <p>
+          Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit:
+          <a href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener noreferrer">
+            https://ec.europa.eu/consumers/odr/
+          </a>.
+          Unsere E-Mail-Adresse finden Sie oben im Impressum.
+        </p>
+        <h3>Verbraucherstreitbeilegung</h3>
+        <p>
+          Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+          Verbraucherschlichtungsstelle teilzunehmen.
+        </p>
       </div>
     </section>
 
-    <!-- Haftung -->
     <section class="section" aria-labelledby="haftung">
-      <p class="section-title" id="haftung">Haftungshinweise</p>
+      <p class="section-label" id="haftung">Haftungshinweise</p>
       <div class="card">
-        <div class="disclaimer">
-          <h3>Haftung für Inhalte</h3>
-          <p>
-            Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
-            nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
-            Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
-            Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
-            Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
-            Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine
-            diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
-            Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen
-            werden wir diese Inhalte umgehend entfernen.
-          </p>
-        </div>
-        <div class="disclaimer">
-          <h3>Haftung für Links</h3>
-          <p>
-            Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir
-            keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr
-            übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
-            oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt
-            der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum
-            Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der
-            verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
-            zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links
-            umgehend entfernen.
-          </p>
-        </div>
-        <div class="disclaimer">
-          <h3>Urheberrecht</h3>
-          <p>
-            Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
-            unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung
-            und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
-            schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
-            dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
-            Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die
-            Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche
-            gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
-            werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von
-            Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
-          </p>
-        </div>
+        <h3>Haftung für Inhalte</h3>
+        <p>
+          Als Diensteanbieter sind wir gemäß § 7 Abs. 1 TMG für eigene Inhalte auf diesen Seiten
+          nach den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als
+          Diensteanbieter jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde
+          Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+          Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von
+          Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine
+          diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten
+          Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden Rechtsverletzungen
+          werden wir diese Inhalte umgehend entfernen.
+        </p>
+        <h3>Haftung für Links</h3>
+        <p>
+          Unser Angebot enthält Links zu externen Webseiten Dritter, auf deren Inhalte wir
+          keinen Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr
+          übernehmen. Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter
+          oder Betreiber der Seiten verantwortlich. Die verlinkten Seiten wurden zum Zeitpunkt
+          der Verlinkung auf mögliche Rechtsverstöße überprüft. Rechtswidrige Inhalte waren zum
+          Zeitpunkt der Verlinkung nicht erkennbar. Eine permanente inhaltliche Kontrolle der
+          verlinkten Seiten ist jedoch ohne konkrete Anhaltspunkte einer Rechtsverletzung nicht
+          zumutbar. Bei Bekanntwerden von Rechtsverletzungen werden wir derartige Links
+          umgehend entfernen.
+        </p>
+        <h3>Urheberrecht</h3>
+        <p>
+          Die durch den Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten
+          unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung
+          und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der
+          schriftlichen Zustimmung des jeweiligen Autors bzw. Erstellers. Downloads und Kopien
+          dieser Seite sind nur für den privaten, nicht kommerziellen Gebrauch gestattet.
+          Soweit die Inhalte auf dieser Seite nicht vom Betreiber erstellt wurden, werden die
+          Urheberrechte Dritter beachtet. Insbesondere werden Inhalte Dritter als solche
+          gekennzeichnet. Sollten Sie trotzdem auf eine Urheberrechtsverletzung aufmerksam
+          werden, bitten wir um einen entsprechenden Hinweis. Bei Bekanntwerden von
+          Rechtsverletzungen werden wir derartige Inhalte umgehend entfernen.
+        </p>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
-    © 2026 Nordiva Clean Gebäudeservice ·
-    <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a> ·
+    © 2026 Nordiva Gebäudereinigung
+    <span class="sep">·</span>
+    <a href="/impressum.html">Impressum</a>
+    <span class="sep">·</span>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <span class="sep">·</span>
     <a href="/">Startseite</a>
   </footer>
 
 </body>
+
 </html>

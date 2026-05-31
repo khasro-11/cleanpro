@@ -1,470 +1,486 @@
 <!DOCTYPE html>
 <html lang="de">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Datenschutzerklärung – Nordiva Clean Gebäudeservice</title>
+  <title>Datenschutzerklärung – Nordiva Gebäudereinigung</title>
   <meta name="robots" content="noindex, follow" />
   <link rel="canonical" href="https://nordiva-clean.de/datenschutz.html" />
-  <link rel="icon" type="image/svg+xml" href="/brand/favicon.svg" />
-  <meta name="theme-color" content="#0e1f33" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="theme-color" content="#2b90d9" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap&font-display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet" />
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --ink:      #0e1f33;
-      --ink-soft: #3a4a5e;
-      --sky:      #7fb3d5;
-      --paper:    #f5f7f8;
-      --border:   rgba(14,31,51,0.09);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --green: #2b90d9;
+      --green-deep: #1d6fb0;
+      --green-tint: #e8f4fc;
+      --green-tint-2: #d2e9f8;
+      --ink: #15202b;
+      --ink-soft: #51606e;
+      --ink-faint: #8a96a3;
+      --bg: #ffffff;
+      --bg-soft: #f4f7fa;
+      --line: #e3e9ef;
+      --line-2: #d6dee7;
+      --radius: 16px;
+      --shadow: 0 2px 4px rgba(20, 28, 40, .04), 0 14px 34px -18px rgba(20, 28, 40, .18);
+      --maxw: 1180px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
-      font-family: 'Manrope', 'Inter', system-ui, sans-serif;
-      background: var(--paper);
+      font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+      background: var(--bg);
       color: var(--ink);
-      line-height: 1.7;
+      line-height: 1.6;
+      font-size: 17px;
       -webkit-font-smoothing: antialiased;
     }
 
-    /* ── NAV ── */
-    .nav {
-      position: fixed;
-      top: 12px; left: 12px; right: 12px;
-      z-index: 50;
+    ::selection {
+      background: var(--green);
+      color: #fff;
     }
-    .nav-inner {
-      background: var(--ink);
-      border-radius: 999px;
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* NAV */
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 60;
+      background: rgba(255, 255, 255, .86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 20px -16px rgba(20, 32, 40, .3);
+    }
+
+    .nav-in {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 28px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 14px 18px;
+      height: 72px;
     }
-    .nav-brand {
+
+    .logo {
       display: flex;
-      flex-direction: column;
-      gap: 1px;
-      text-decoration: none;
-    }
-    .nav-brand-name {
-      font-family: 'Manrope', sans-serif;
-      font-size: 15px;
+      align-items: center;
+      gap: 9px;
       font-weight: 800;
-      letter-spacing: -0.04em;
-      color: #f5f7f8;
-      line-height: 1;
+      font-size: 20px;
+      letter-spacing: -.03em;
     }
-    .nav-brand-sub {
-      font-size: 9px;
-      font-weight: 500;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: rgba(245,247,248,0.55);
+
+    .logo .mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 9px;
+      background: var(--green);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      font-size: 16px;
     }
-    .nav-back {
-      background: var(--sky);
-      color: var(--ink);
-      padding: 7px 14px;
-      border-radius: 999px;
-      font-weight: 700;
+
+    .logo b {
+      font-weight: 800;
+    }
+
+    .logo span {
+      color: var(--ink-faint);
+      font-weight: 600;
       font-size: 13px;
-      text-decoration: none;
+      letter-spacing: 0;
+    }
+
+    .btn-back {
       display: inline-flex;
       align-items: center;
-      gap: 4px;
-      transition: transform 0.25s cubic-bezier(0.34,1.56,0.64,1), opacity 0.2s ease;
+      gap: 7px;
+      padding: 10px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 14px;
+      background: var(--bg-soft);
+      color: var(--ink);
+      border: 1.5px solid var(--line-2);
+      transition: transform .18s ease, border-color .18s, background .18s;
     }
-    .nav-back:hover { transform: translateY(-1px) scale(1.03); }
-    .nav-back:active { transform: scale(0.97); }
-    .nav-back:focus-visible { outline: 3px solid var(--sky); outline-offset: 3px; }
 
-    /* ── PAGE ── */
+    .btn-back:hover {
+      border-color: var(--ink);
+      transform: translateY(-1px);
+      background: #fff;
+    }
+
+    .btn-back:focus-visible {
+      outline: 3px solid var(--green);
+      outline-offset: 3px;
+    }
+
+    /* PAGE */
     .page {
-      max-width: 720px;
+      max-width: 760px;
       margin: 0 auto;
-      padding: 120px 24px 80px;
+      padding: 64px 28px 80px;
     }
 
     .page-eyebrow {
-      font-size: 11px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--green-tint);
+      color: var(--green-deep);
+      font-size: 13px;
       font-weight: 700;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--sky);
-      margin-bottom: 12px;
-    }
-    .page-title {
-      font-family: 'Playfair Display', Georgia, serif;
-      font-size: clamp(32px, 5vw, 48px);
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.02em;
-      line-height: 1.15;
-      margin-bottom: 8px;
-    }
-    .page-subtitle {
-      font-size: 15px;
-      color: var(--ink-soft);
-      margin-bottom: 48px;
+      padding: 7px 14px;
+      border-radius: 30px;
+      letter-spacing: .01em;
+      margin-bottom: 20px;
     }
 
-    /* ── SECTION ── */
-    .section { margin-bottom: 32px; }
-    .section:last-child { margin-bottom: 0; }
+    .page-eyebrow::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+    }
+
+    .page-title {
+      font-size: clamp(30px, 5vw, 46px);
+      font-weight: 800;
+      letter-spacing: -.035em;
+      line-height: 1.1;
+      margin-bottom: 10px;
+    }
+
+    .page-subtitle {
+      font-size: 16px;
+      color: var(--ink-soft);
+      margin-bottom: 52px;
+    }
+
+    /* SECTIONS */
+    .section {
+      margin-bottom: 28px;
+    }
+
+    .section:last-child {
+      margin-bottom: 0;
+    }
 
     .section-label {
-      font-size: 11px;
+      font-size: 12px;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: .1em;
       text-transform: uppercase;
-      color: var(--sky);
-      margin-bottom: 14px;
-    }
-
-    .card {
-      background: #ffffff;
-      border-radius: 16px;
-      padding: 28px 32px;
-      box-shadow:
-        0 1px 2px rgba(14,31,51,0.04),
-        0 4px 16px rgba(14,31,51,0.07),
-        0 16px 40px rgba(14,31,51,0.04);
-    }
-
-    .card h2 {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--ink);
-      letter-spacing: -0.02em;
+      color: var(--green-deep);
       margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .section-label::before {
+      content: "";
+      width: 14px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--green);
+      flex-shrink: 0;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
     }
 
     .card h3 {
-      font-size: 15px;
+      font-size: 16px;
       font-weight: 700;
-      color: var(--ink);
+      letter-spacing: -.015em;
       margin-top: 24px;
       margin-bottom: 8px;
     }
-    .card h3:first-child { margin-top: 0; }
+
+    .card h3:first-child {
+      margin-top: 0;
+    }
 
     .card p {
-      font-size: 14.5px;
+      font-size: 15px;
       color: var(--ink-soft);
-      line-height: 1.8;
-      margin-bottom: 12px;
+      line-height: 1.75;
+      margin-bottom: 10px;
     }
-    .card p:last-child { margin-bottom: 0; }
 
-    .card ul {
-      margin: 10px 0 12px 20px;
-      font-size: 14.5px;
-      color: var(--ink-soft);
-      line-height: 1.8;
+    .card p:last-child {
+      margin-bottom: 0;
     }
-    .card ul li { margin-bottom: 4px; }
 
     .card a {
-      color: var(--ink);
+      color: var(--green-deep);
       text-decoration: underline;
-      text-decoration-color: var(--sky);
+      text-decoration-color: var(--green-tint-2);
       text-underline-offset: 3px;
-      transition: color 0.2s ease;
-    }
-    .card a:hover { color: #2a7fa8; }
-    .card a:focus-visible { outline: 2px solid var(--sky); border-radius: 2px; }
-
-    .divider {
-      height: 1px;
-      background: var(--border);
-      margin: 32px 0;
+      font-weight: 600;
+      transition: color .18s, text-decoration-color .18s;
     }
 
-    /* ── FOOTER ── */
+    .card a:hover {
+      color: var(--green);
+      text-decoration-color: var(--green);
+    }
+
+    .card a:focus-visible {
+      outline: 2px solid var(--green);
+      border-radius: 3px;
+    }
+
+    /* FOOTER */
     .site-footer {
-      border-top: 1px solid var(--border);
-      padding: 28px 24px;
+      border-top: 1px solid var(--line);
+      padding: 28px;
       text-align: center;
-      font-size: 13px;
+      font-size: 14px;
       color: var(--ink-soft);
     }
+
     .site-footer a {
       color: var(--ink-soft);
-      text-decoration: none;
-      transition: color 0.2s ease;
+      font-weight: 600;
+      transition: color .18s;
     }
-    .site-footer a:hover { color: var(--ink); }
+
+    .site-footer a:hover {
+      color: var(--ink);
+    }
+
+    .site-footer .sep {
+      margin: 0 8px;
+      color: var(--line-2);
+    }
 
     @media (max-width: 600px) {
-      .card { padding: 22px 20px; }
+      .card {
+        padding: 22px 20px;
+      }
+
+      .page {
+        padding: 44px 20px 64px;
+      }
     }
   </style>
 </head>
+
 <body>
 
-  <!-- NAV -->
-  <div class="nav">
-    <div class="nav-inner">
-      <a href="/" class="nav-brand" aria-label="Nordiva Clean Startseite">
-        <span class="nav-brand-name">Nordiva Clean</span>
-        <span class="nav-brand-sub">Gebäudeservice</span>
+  <nav class="nav" aria-label="Hauptnavigation">
+    <div class="nav-in">
+      <a href="/" class="logo" aria-label="Nordiva Startseite">
+        <span class="mark">N</span>
+        <b>Nordiva</b>
+        <span>Gebäudereinigung</span>
       </a>
-      <a href="/" class="nav-back">← Startseite</a>
+      <a href="/" class="btn-back">← Startseite</a>
     </div>
-  </div>
+  </nav>
 
-  <!-- CONTENT -->
   <main class="page">
 
     <p class="page-eyebrow">Rechtliche Angaben</p>
     <h1 class="page-title">Datenschutz&shy;erklärung</h1>
     <p class="page-subtitle">Gemäß DSGVO, BDSG und TMG — Stand: Mai 2026</p>
 
-    <!-- 1. Verantwortlicher -->
     <section class="section" aria-labelledby="verantwortlicher">
       <p class="section-label" id="verantwortlicher">1. Verantwortlicher</p>
       <div class="card">
-        <p>
-          Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:
-        </p>
+        <p>Verantwortlicher im Sinne der Datenschutz-Grundverordnung (DSGVO) ist:</p>
         <p>
           <strong>Dulstan Kutna</strong><br>
-          Nordiva Clean Gebäudeservice<br>
+          Nordiva Gebäudereinigung<br>
           Bahnhofstraße 21<br>
           59199 Bönen<br><br>
           Telefon: <a href="tel:+4915510057038">+49 155 10057038</a><br>
-          E-Mail: <a href="mailto:nordivaclean@gmail.com">nordivaclean@gmail.com</a>
+          E-Mail: <a href="mailto:nordivaclean@gmail.com">info@nordiva-clean.de</a>
         </p>
       </div>
     </section>
 
-    <!-- 2. Allgemeines -->
     <section class="section" aria-labelledby="allgemeines">
       <p class="section-label" id="allgemeines">2. Allgemeine Hinweise</p>
       <div class="card">
         <h3>Datenschutz auf einen Blick</h3>
-        <p>
-          Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
-          personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene
-          Daten sind alle Daten, mit denen Sie persönlich identifiziert werden können.
-        </p>
+        <p>Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren personenbezogenen Daten
+          passiert, wenn Sie diese Website besuchen. Personenbezogene Daten sind alle Daten, mit denen Sie persönlich
+          identifiziert werden können.</p>
         <h3>Datenerfassung auf dieser Website</h3>
-        <p>
-          Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen
-          Kontaktdaten finden Sie im Abschnitt „Verantwortlicher" dieser Datenschutzerklärung.
-        </p>
-        <p>
-          Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B.
-          Daten, die Sie in ein Kontaktformular eingeben). Andere Daten werden automatisch oder
-          nach Ihrer Einwilligung beim Besuch der Website durch unsere IT-Systeme erfasst.
-          Das sind vor allem technische Daten (z. B. Internetbrowser, Betriebssystem oder
-          Uhrzeit des Seitenaufrufs).
-        </p>
+        <p>Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen Kontaktdaten finden Sie
+          im Abschnitt „Verantwortlicher" dieser Datenschutzerklärung.</p>
+        <p>Ihre Daten werden zum einen dadurch erhoben, dass Sie uns diese mitteilen (z. B. Daten, die Sie in ein
+          Kontaktformular eingeben). Andere Daten werden automatisch oder nach Ihrer Einwilligung beim Besuch der
+          Website durch unsere IT-Systeme erfasst. Das sind vor allem technische Daten (z. B. Internetbrowser,
+          Betriebssystem oder Uhrzeit des Seitenaufrufs).</p>
         <h3>Ihre Rechte</h3>
-        <p>
-          Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und
-          Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein
-          Recht auf Berichtigung oder Löschung dieser Daten. Wenn Sie eine Einwilligung zur
-          Datenverarbeitung erteilt haben, können Sie diese jederzeit für die Zukunft widerrufen.
-          Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der
-          Verarbeitung Ihrer personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein
-          Beschwerderecht bei der zuständigen Aufsichtsbehörde zu.
-        </p>
-        <p>
-          Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an
-          uns wenden.
-        </p>
+        <p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten
+          personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht auf Berichtigung oder Löschung dieser Daten.
+          Wenn Sie eine Einwilligung zur Datenverarbeitung erteilt haben, können Sie diese jederzeit für die Zukunft
+          widerrufen. Außerdem haben Sie das Recht, unter bestimmten Umständen die Einschränkung der Verarbeitung Ihrer
+          personenbezogenen Daten zu verlangen. Des Weiteren steht Ihnen ein Beschwerderecht bei der zuständigen
+          Aufsichtsbehörde zu.</p>
+        <p>Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit an uns wenden.</p>
       </div>
     </section>
 
-    <!-- 3. Hosting -->
     <section class="section" aria-labelledby="hosting">
       <p class="section-label" id="hosting">3. Hosting</p>
       <div class="card">
         <h3>Vercel</h3>
-        <p>
-          Diese Website wird bei Vercel Inc., 340 Pine Street, Suite 701, San Francisco,
-          CA 94104, USA gehostet. Wenn Sie unsere Website besuchen, verarbeitet Vercel
-          automatisch technische Daten wie Ihre IP-Adresse, den verwendeten Browser,
-          das Betriebssystem sowie Datum und Uhrzeit des Zugriffs. Diese Daten werden in
-          sogenannten Server-Log-Dateien gespeichert.
-        </p>
-        <p>
-          Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser
-          berechtigtes Interesse liegt in der technischen Bereitstellung und Sicherheit
-          der Website. Vercel hat sich dem EU-US Data Privacy Framework unterworfen und
-          bietet damit ein angemessenes Datenschutzniveau.
-        </p>
-        <p>
-          Weitere Informationen finden Sie in der Datenschutzerklärung von Vercel:
-          <a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">
-            vercel.com/legal/privacy-policy
-          </a>
-        </p>
+        <p>Diese Website wird bei Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, USA gehostet. Wenn
+          Sie unsere Website besuchen, verarbeitet Vercel automatisch technische Daten wie Ihre IP-Adresse, den
+          verwendeten Browser, das Betriebssystem sowie Datum und Uhrzeit des Zugriffs. Diese Daten werden in
+          sogenannten Server-Log-Dateien gespeichert.</p>
+        <p>Die Verarbeitung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in
+          der technischen Bereitstellung und Sicherheit der Website. Vercel hat sich dem EU-US Data Privacy Framework
+          unterworfen und bietet damit ein angemessenes Datenschutzniveau.</p>
+        <p>Weitere Informationen finden Sie in der Datenschutzerklärung von Vercel: <a
+            href="https://vercel.com/legal/privacy-policy" target="_blank"
+            rel="noopener noreferrer">vercel.com/legal/privacy-policy</a></p>
       </div>
     </section>
 
-    <!-- 4. Kontaktformular & EmailJS -->
     <section class="section" aria-labelledby="kontaktformular">
       <p class="section-label" id="kontaktformular">4. Kontaktformular</p>
       <div class="card">
         <h3>Verarbeitung Ihrer Anfrage</h3>
-        <p>
-          Wenn Sie uns über das Kontaktformular auf dieser Website eine Nachricht senden,
-          werden die von Ihnen eingegebenen Daten (z. B. Name, E-Mail-Adresse, Telefonnummer,
-          Nachricht) zur Bearbeitung Ihrer Anfrage verarbeitet. Die Eingabe dieser Daten
-          erfolgt freiwillig.
-        </p>
-        <p>
-          Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung)
-          sowie Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an der Beantwortung von
-          Kundenanfragen). Ihre Daten werden ausschließlich zur Bearbeitung Ihrer Anfrage
-          verwendet und nicht an Dritte weitergegeben, es sei denn, dies ist zur Bearbeitung
-          erforderlich.
-        </p>
+        <p>Wenn Sie uns über das Kontaktformular auf dieser Website eine Nachricht senden, werden die von Ihnen
+          eingegebenen Daten (z. B. Name, E-Mail-Adresse, Telefonnummer, Nachricht) zur Bearbeitung Ihrer Anfrage
+          verarbeitet. Die Eingabe dieser Daten erfolgt freiwillig.</p>
+        <p>Rechtsgrundlage für die Verarbeitung ist Art. 6 Abs. 1 lit. b DSGVO (Vertragsanbahnung) sowie Art. 6 Abs. 1
+          lit. f DSGVO (berechtigtes Interesse an der Beantwortung von Kundenanfragen). Ihre Daten werden ausschließlich
+          zur Bearbeitung Ihrer Anfrage verwendet und nicht an Dritte weitergegeben, es sei denn, dies ist zur
+          Bearbeitung erforderlich.</p>
         <h3>EmailJS</h3>
-        <p>
-          Der Versand von Formulardaten erfolgt über den Dienst EmailJS (EmailJS Ltd.). Dabei
-          werden die von Ihnen eingegebenen Daten an die Server von EmailJS übertragen und von
-          dort als E-Mail an uns weitergeleitet. EmailJS verarbeitet diese Daten ausschließlich
-          zur Durchführung des Versands.
-        </p>
-        <p>
-          Weitere Informationen finden Sie in der Datenschutzerklärung von EmailJS:
-          <a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer">
-            www.emailjs.com/legal/privacy-policy
-          </a>
-        </p>
+        <p>Der Versand von Formulardaten erfolgt über den Dienst EmailJS (EmailJS Ltd.). Dabei werden die von Ihnen
+          eingegebenen Daten an die Server von EmailJS übertragen und von dort als E-Mail an uns weitergeleitet. EmailJS
+          verarbeitet diese Daten ausschließlich zur Durchführung des Versands.</p>
+        <p>Weitere Informationen finden Sie in der Datenschutzerklärung von EmailJS: <a
+            href="https://www.emailjs.com/legal/privacy-policy/" target="_blank"
+            rel="noopener noreferrer">www.emailjs.com/legal/privacy-policy</a></p>
       </div>
     </section>
 
-    <!-- 5. Google Fonts -->
     <section class="section" aria-labelledby="google-fonts">
       <p class="section-label" id="google-fonts">5. Google Fonts</p>
       <div class="card">
         <h3>Einbindung von Google Fonts</h3>
-        <p>
-          Diese Website verwendet Google Fonts, einen Dienst der Google LLC, 1600 Amphitheatre
-          Parkway, Mountain View, CA 94043, USA. Die Schriftarten werden direkt von den Servern
-          von Google geladen. Dabei wird Ihre IP-Adresse an Google übermittelt.
-        </p>
-        <p>
-          Die Einbindung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser
-          berechtigtes Interesse liegt in der einheitlichen und ansprechenden Darstellung
-          unserer Website.
-        </p>
-        <p>
-          Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf
-          Grundlage von Art. 6 Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.
-        </p>
-        <p>
-          Google LLC hat sich dem EU-US Data Privacy Framework unterworfen. Weitere
-          Informationen zu Google Fonts finden Sie unter:
-          <a href="https://developers.google.com/fonts/faq/privacy" target="_blank" rel="noopener noreferrer">
-            developers.google.com/fonts/faq/privacy
-          </a>
-        </p>
+        <p>Diese Website verwendet Google Fonts, einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View,
+          CA 94043, USA. Die Schriftarten werden direkt von den Servern von Google geladen. Dabei wird Ihre IP-Adresse
+          an Google übermittelt.</p>
+        <p>Die Einbindung erfolgt auf Grundlage von Art. 6 Abs. 1 lit. f DSGVO. Unser berechtigtes Interesse liegt in
+          der einheitlichen und ansprechenden Darstellung unserer Website.</p>
+        <p>Sofern eine Einwilligung abgefragt wurde, erfolgt die Verarbeitung ausschließlich auf Grundlage von Art. 6
+          Abs. 1 lit. a DSGVO; die Einwilligung ist jederzeit widerrufbar.</p>
+        <p>Google LLC hat sich dem EU-US Data Privacy Framework unterworfen. Weitere Informationen zu Google Fonts
+          finden Sie unter: <a href="https://developers.google.com/fonts/faq/privacy" target="_blank"
+            rel="noopener noreferrer">developers.google.com/fonts/faq/privacy</a></p>
       </div>
     </section>
 
-    <!-- 6. Social Media Links -->
     <section class="section" aria-labelledby="social-media">
       <p class="section-label" id="social-media">6. Social Media</p>
       <div class="card">
         <h3>Links zu Facebook und Instagram</h3>
-        <p>
-          Auf dieser Website sind Links zu den Social-Media-Plattformen Facebook und Instagram
-          eingebunden. Anbieter beider Plattformen ist Meta Platforms Ireland Limited,
-          4 Grand Canal Square, Grand Canal Harbour, Dublin 2, Irland.
-        </p>
-        <p>
-          Es handelt sich dabei ausschließlich um einfache Hyperlinks. Eine Datenübertragung
-          an Meta findet erst statt, wenn Sie aktiv auf einen dieser Links klicken und die
-          jeweilige Plattform besuchen. Beim Aufruf der verlinkten Seiten gelten ausschließlich
-          die Datenschutzbestimmungen von Meta.
-        </p>
-        <p>
-          Datenschutzerklärung von Meta:
-          <a href="https://www.facebook.com/privacy/policy/" target="_blank" rel="noopener noreferrer">
-            www.facebook.com/privacy/policy
-          </a>
-        </p>
+        <p>Auf dieser Website sind Links zu den Social-Media-Plattformen Facebook und Instagram eingebunden. Anbieter
+          beider Plattformen ist Meta Platforms Ireland Limited, 4 Grand Canal Square, Grand Canal Harbour, Dublin 2,
+          Irland.</p>
+        <p>Es handelt sich dabei ausschließlich um einfache Hyperlinks. Eine Datenübertragung an Meta findet erst statt,
+          wenn Sie aktiv auf einen dieser Links klicken und die jeweilige Plattform besuchen. Beim Aufruf der verlinkten
+          Seiten gelten ausschließlich die Datenschutzbestimmungen von Meta.</p>
+        <p>Datenschutzerklärung von Meta: <a href="https://www.facebook.com/privacy/policy/" target="_blank"
+            rel="noopener noreferrer">www.facebook.com/privacy/policy</a></p>
       </div>
     </section>
 
-    <!-- 7. Cookies -->
     <section class="section" aria-labelledby="cookies">
       <p class="section-label" id="cookies">7. Cookies</p>
       <div class="card">
-        <p>
-          Diese Website verwendet keine Cookies, die über technisch notwendige Funktionen
-          hinausgehen. Es werden keine Tracking- oder Analyse-Cookies eingesetzt.
-          Eine Einwilligung zum Setzen von Cookies ist daher nicht erforderlich.
-        </p>
+        <p>Diese Website verwendet keine Cookies, die über technisch notwendige Funktionen hinausgehen. Es werden keine
+          Tracking- oder Analyse-Cookies eingesetzt. Eine Einwilligung zum Setzen von Cookies ist daher nicht
+          erforderlich.</p>
       </div>
     </section>
 
-    <!-- 8. Rechte -->
     <section class="section" aria-labelledby="rechte">
       <p class="section-label" id="rechte">8. Ihre Rechte als betroffene Person</p>
       <div class="card">
         <h3>Auskunft, Berichtigung, Löschung</h3>
-        <p>
-          Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf
-          unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten, deren
-          Herkunft und Empfänger und den Zweck der Datenverarbeitung sowie ggf. ein Recht auf
-          Berichtigung oder Löschung dieser Daten (Art. 15–17 DSGVO).
-        </p>
+        <p>Sie haben im Rahmen der geltenden gesetzlichen Bestimmungen jederzeit das Recht auf unentgeltliche Auskunft
+          über Ihre gespeicherten personenbezogenen Daten, deren Herkunft und Empfänger und den Zweck der
+          Datenverarbeitung sowie ggf. ein Recht auf Berichtigung oder Löschung dieser Daten (Art. 15–17 DSGVO).</p>
         <h3>Einschränkung der Verarbeitung</h3>
-        <p>
-          Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen
-          Daten zu verlangen (Art. 18 DSGVO).
-        </p>
+        <p>Sie haben das Recht, die Einschränkung der Verarbeitung Ihrer personenbezogenen Daten zu verlangen (Art. 18
+          DSGVO).</p>
         <h3>Datenübertragbarkeit</h3>
-        <p>
-          Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in
-          Erfüllung eines Vertrags automatisiert verarbeiten, an sich oder an einen Dritten
-          in einem gängigen, maschinenlesbaren Format aushändigen zu lassen (Art. 20 DSGVO).
-        </p>
+        <p>Sie haben das Recht, Daten, die wir auf Grundlage Ihrer Einwilligung oder in Erfüllung eines Vertrags
+          automatisiert verarbeiten, an sich oder an einen Dritten in einem gängigen, maschinenlesbaren Format
+          aushändigen zu lassen (Art. 20 DSGVO).</p>
         <h3>Widerspruch</h3>
-        <p>
-          Sie haben das Recht, der Verarbeitung Ihrer personenbezogenen Daten, die auf
-          Art. 6 Abs. 1 lit. e oder f DSGVO beruht, jederzeit zu widersprechen (Art. 21 DSGVO).
-        </p>
+        <p>Sie haben das Recht, der Verarbeitung Ihrer personenbezogenen Daten, die auf Art. 6 Abs. 1 lit. e oder f
+          DSGVO beruht, jederzeit zu widersprechen (Art. 21 DSGVO).</p>
         <h3>Beschwerderecht</h3>
-        <p>
-          Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren.
-          Zuständige Aufsichtsbehörde für Nordrhein-Westfalen ist die Landesbeauftragte für
-          Datenschutz und Informationsfreiheit NRW:
-        </p>
+        <p>Sie haben das Recht, sich bei einer Datenschutz-Aufsichtsbehörde zu beschweren. Zuständige Aufsichtsbehörde
+          für Nordrhein-Westfalen ist die Landesbeauftragte für Datenschutz und Informationsfreiheit NRW:</p>
         <p>
           Landesbeauftragte für Datenschutz und Informationsfreiheit NRW<br>
           Postfach 20 04 44<br>
           40102 Düsseldorf<br>
           <a href="https://www.ldi.nrw.de" target="_blank" rel="noopener noreferrer">www.ldi.nrw.de</a>
         </p>
-        <p>
-          Zur Geltendmachung Ihrer Rechte wenden Sie sich bitte an:
-          <a href="mailto:nordivaclean@gmail.com">nordivaclean@gmail.com</a>
-        </p>
+        <p>Zur Geltendmachung Ihrer Rechte wenden Sie sich bitte an: <a
+            href="mailto:nordivaclean@gmail.com">nordivaclean@gmail.com</a></p>
       </div>
     </section>
 
   </main>
 
-  <!-- FOOTER -->
   <footer class="site-footer">
-    © 2026 Nordiva Clean Gebäudeservice ·
-    <a href="/impressum.html">Impressum</a> ·
-    <a href="/datenschutz.html">Datenschutz</a> ·
+    © 2026 Nordiva Gebäudereinigung
+    <span class="sep">·</span>
+    <a href="/impressum.html">Impressum</a>
+    <span class="sep">·</span>
+    <a href="/datenschutz.html">Datenschutz</a>
+    <span class="sep">·</span>
     <a href="/">Startseite</a>
   </footer>
 
 </body>
+
 </html>
