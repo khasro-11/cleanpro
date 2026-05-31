@@ -1,31 +1,31 @@
-import { chromium } from 'playwright';
-import { mkdirSync } from 'fs';
-import path from 'path';
+import { chromium } from "playwright";
+import { mkdirSync } from "fs";
+import path from "path";
 
-const BASE_URL = 'http://localhost:3000';
-const OUT = path.resolve('./responsive-audit');
+const BASE_URL = "http://localhost:3000";
+const OUT = path.resolve("./responsive-audit");
 mkdirSync(OUT, { recursive: true });
 
 const VIEWPORTS = [
-  { name: '320x568',   width: 320,  height: 568  },
-  { name: '375x812',   width: 375,  height: 812  },
-  { name: '768x1024',  width: 768,  height: 1024 },
-  { name: '1024x768',  width: 1024, height: 768  },
-  { name: '1280x800',  width: 1280, height: 800  },
-  { name: '1440x900',  width: 1440, height: 900  },
-  { name: '1920x1080', width: 1920, height: 1080 },
-  { name: '844x390-landscape', width: 844, height: 390 },
+  { name: "320x568", width: 320, height: 568 },
+  { name: "375x812", width: 375, height: 812 },
+  { name: "768x1024", width: 768, height: 1024 },
+  { name: "1024x768", width: 1024, height: 768 },
+  { name: "1280x800", width: 1280, height: 800 },
+  { name: "1440x900", width: 1440, height: 900 },
+  { name: "1920x1080", width: 1920, height: 1080 },
+  { name: "844x390-landscape", width: 844, height: 390 },
 ];
 
 // Sections to scroll-capture on the single-page app
 const SECTIONS = [
-  { name: 'hero',      selector: '#hero'      },
-  { name: 'leistungen', selector: '#leistungen' },
-  { name: 'galerie',   selector: '#galerie'   },
-  { name: 'ablauf',    selector: '#ablauf'    },
-  { name: 'vorteile',  selector: '#vorteile'  },
-  { name: 'kontakt',   selector: '#kontakt'   },
-  { name: 'footer',    selector: 'footer'     },
+  { name: "hero", selector: "#hero" },
+  { name: "leistungen", selector: "#leistungen" },
+  { name: "galerie", selector: "#galerie" },
+  { name: "ablauf", selector: "#ablauf" },
+  { name: "vorteile", selector: "#vorteile" },
+  { name: "kontakt", selector: "#kontakt" },
+  { name: "footer", selector: "footer" },
 ];
 
 const findings = [];
@@ -44,19 +44,27 @@ async function run() {
 
     // Set mobile UA for small screens so touch events fire
     if (vp.width <= 430) {
-      await page.setExtraHTTPHeaders({ 'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1' });
+      await page.setExtraHTTPHeaders({
+        "User-Agent":
+          "Mozilla/5.0 (iPhone; CPU iPhone OS 15_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/15.0 Mobile/15E148 Safari/604.1",
+      });
     }
 
-    await page.goto(BASE_URL, { waitUntil: 'networkidle', timeout: 20000 });
+    await page.goto(BASE_URL, { waitUntil: "networkidle", timeout: 20000 });
     await page.waitForTimeout(1200); // framer-motion settle
 
     // --- CHECK 1: viewport meta ---
-    const viewportMeta = await page.$eval(
-      'meta[name="viewport"]',
-      el => el.getAttribute('content')
-    ).catch(() => null);
+    const viewportMeta = await page
+      .$eval('meta[name="viewport"]', (el) => el.getAttribute("content"))
+      .catch(() => null);
     if (!viewportMeta) {
-      note('global', vp.name, 'critical', 'Missing <meta name="viewport">!', 'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to index.html');
+      note(
+        "global",
+        vp.name,
+        "critical",
+        'Missing <meta name="viewport">!',
+        'Add <meta name="viewport" content="width=device-width, initial-scale=1"> to index.html',
+      );
     }
 
     // --- CHECK 2: horizontal overflow ---
@@ -66,9 +74,12 @@ async function run() {
     if (overflow) {
       const scrollWidth = await page.evaluate(() => document.body.scrollWidth);
       const innerWidth = await page.evaluate(() => window.innerWidth);
-      note('global', vp.name, 'critical',
+      note(
+        "global",
+        vp.name,
+        "critical",
         `Horizontal overflow detected: body.scrollWidth=${scrollWidth}px, viewport=${innerWidth}px (overflow: ${scrollWidth - innerWidth}px)`,
-        'Find elements with fixed pixel widths wider than viewport; add overflow-x:hidden to body if needed.'
+        "Find elements with fixed pixel widths wider than viewport; add overflow-x:hidden to body if needed.",
       );
     }
 
@@ -85,27 +96,43 @@ async function run() {
       if (!el) continue;
       await el.scrollIntoViewIfNeeded();
       await page.waitForTimeout(400);
-      await el.screenshot({ path: `${OUT}/section_${sec.name}_${vp.name}.png` }).catch(() => {});
+      await el
+        .screenshot({ path: `${OUT}/section_${sec.name}_${vp.name}.png` })
+        .catch(() => {});
     }
 
     // --- CHECK 3: Nav hamburger logic ---
-    const hamburger = await page.$('.nav-hamburger');
+    const hamburger = await page.$(".nav-hamburger");
     const hamburgerVisible = hamburger ? await hamburger.isVisible() : false;
-    const desktopLinks = await page.$('nav .hidden');
-    const desktopLinksVisible = desktopLinks ? await desktopLinks.isVisible() : false;
+    const desktopLinks = await page.$("nav .hidden");
+    const desktopLinksVisible = desktopLinks
+      ? await desktopLinks.isVisible()
+      : false;
 
     if (vp.width < 768) {
       if (!hamburgerVisible) {
-        note('nav', vp.name, 'critical', 'Hamburger button not visible on mobile', 'Check @media (max-width:767px) for .nav-hamburger');
+        note(
+          "nav",
+          vp.name,
+          "critical",
+          "Hamburger button not visible on mobile",
+          "Check @media (max-width:767px) for .nav-hamburger",
+        );
       }
       // Test burger open/close
       if (hamburger) {
         await hamburger.click();
         await page.waitForTimeout(400);
-        const mobileMenu = await page.$('.nav-mobile-menu');
+        const mobileMenu = await page.$(".nav-mobile-menu");
         const menuOpen = mobileMenu ? await mobileMenu.isVisible() : false;
         if (!menuOpen) {
-          note('nav', vp.name, 'high', 'Mobile menu does not open when hamburger is clicked', 'Verify AnimatePresence + open state in Nav.jsx');
+          note(
+            "nav",
+            vp.name,
+            "high",
+            "Mobile menu does not open when hamburger is clicked",
+            "Verify AnimatePresence + open state in Nav.jsx",
+          );
         } else {
           console.log(`  Mobile menu opens OK`);
           // Screenshot open menu
@@ -113,15 +140,29 @@ async function run() {
           // Close it
           await hamburger.click();
           await page.waitForTimeout(400);
-          const menuClosed = mobileMenu ? !(await mobileMenu.isVisible()) : true;
+          const menuClosed = mobileMenu
+            ? !(await mobileMenu.isVisible())
+            : true;
           if (!menuClosed) {
-            note('nav', vp.name, 'medium', 'Mobile menu does not close after second hamburger click', 'Check toggle logic in Nav.jsx');
+            note(
+              "nav",
+              vp.name,
+              "medium",
+              "Mobile menu does not close after second hamburger click",
+              "Check toggle logic in Nav.jsx",
+            );
           }
         }
       }
     } else {
       if (hamburgerVisible) {
-        note('nav', vp.name, 'high', 'Hamburger visible at desktop viewport — should be hidden on md+', 'Check .nav-hamburger display:none @media (min-width:768px)');
+        note(
+          "nav",
+          vp.name,
+          "high",
+          "Hamburger visible at desktop viewport — should be hidden on md+",
+          "Check .nav-hamburger display:none @media (min-width:768px)",
+        );
       }
     }
 
@@ -129,14 +170,16 @@ async function run() {
     const smallTargets = await page.evaluate(() => {
       const MIN = 44;
       const results = [];
-      const clickables = document.querySelectorAll('a, button, [role="button"]');
+      const clickables = document.querySelectorAll(
+        'a, button, [role="button"]',
+      );
       for (const el of clickables) {
         if (!el.offsetParent) continue; // invisible
         const r = el.getBoundingClientRect();
         if ((r.width < MIN || r.height < MIN) && r.width > 0) {
           results.push({
             tag: el.tagName,
-            text: (el.textContent || '').trim().slice(0, 40),
+            text: (el.textContent || "").trim().slice(0, 40),
             w: Math.round(r.width),
             h: Math.round(r.height),
             class: el.className.toString().slice(0, 60),
@@ -147,9 +190,12 @@ async function run() {
     });
     if (smallTargets.length > 0 && vp.width <= 768) {
       for (const t of smallTargets) {
-        note('touch', vp.name, 'medium',
+        note(
+          "touch",
+          vp.name,
+          "medium",
           `Touch target too small: <${t.tag}> "${t.text}" = ${t.w}×${t.h}px (min 44×44px)`,
-          'Increase padding/min-height on small buttons and links for mobile'
+          "Increase padding/min-height on small buttons and links for mobile",
         );
       }
     }
@@ -159,21 +205,30 @@ async function run() {
       const tinyText = await page.evaluate(() => {
         const MIN_SIZE = 10;
         const results = [];
-        const textEls = document.querySelectorAll('p, span, div, label, li, a, h1, h2, h3, h4, h5, h6');
+        const textEls = document.querySelectorAll(
+          "p, span, div, label, li, a, h1, h2, h3, h4, h5, h6",
+        );
         for (const el of textEls) {
           if (!el.offsetParent || !el.textContent.trim()) continue;
           const size = parseFloat(window.getComputedStyle(el).fontSize);
           if (size < MIN_SIZE && el.getBoundingClientRect().width > 0) {
-            results.push({ tag: el.tagName, size, text: el.textContent.trim().slice(0, 30) });
+            results.push({
+              tag: el.tagName,
+              size,
+              text: el.textContent.trim().slice(0, 30),
+            });
           }
         }
         return results.slice(0, 10);
       });
       if (tinyText.length > 0) {
         for (const t of tinyText) {
-          note('typography', vp.name, 'medium',
+          note(
+            "typography",
+            vp.name,
+            "medium",
             `Font size too small: <${t.tag}> "${t.text}" = ${t.size}px (below 10px threshold)`,
-            'Increase minimum font size on mobile to at least 11px'
+            "Increase minimum font size on mobile to at least 11px",
           );
         }
       }
@@ -182,7 +237,7 @@ async function run() {
     // --- CHECK 6: images overflow ---
     const imgOverflow = await page.evaluate(() => {
       const results = [];
-      for (const img of document.querySelectorAll('img')) {
+      for (const img of document.querySelectorAll("img")) {
         const r = img.getBoundingClientRect();
         if (r.width > window.innerWidth) {
           results.push({ src: img.src.slice(-40), w: Math.round(r.width) });
@@ -192,9 +247,12 @@ async function run() {
     });
     if (imgOverflow.length > 0) {
       for (const img of imgOverflow) {
-        note('images', vp.name, 'critical',
+        note(
+          "images",
+          vp.name,
+          "critical",
           `Image wider than viewport: ${img.src} = ${img.w}px`,
-          'Add max-width:100% and object-fit:cover to images'
+          "Add max-width:100% and object-fit:cover to images",
         );
       }
     }
@@ -202,13 +260,16 @@ async function run() {
     // --- CHECK 7: fixed-px widths causing overflow ---
     const fixedPxOverflow = await page.evaluate(() => {
       const results = [];
-      const all = document.querySelectorAll('*');
+      const all = document.querySelectorAll("*");
       for (const el of all) {
         const s = window.getComputedStyle(el);
         const w = s.width;
         const left = el.getBoundingClientRect().left;
         const right = el.getBoundingClientRect().right;
-        if (right > window.innerWidth + 2 && el.getBoundingClientRect().width > 0) {
+        if (
+          right > window.innerWidth + 2 &&
+          el.getBoundingClientRect().width > 0
+        ) {
           results.push({
             tag: el.tagName,
             cls: el.className?.toString().slice(0, 60),
@@ -221,30 +282,36 @@ async function run() {
     });
     if (fixedPxOverflow.length > 0) {
       for (const el of fixedPxOverflow) {
-        note('layout', vp.name, 'critical',
+        note(
+          "layout",
+          vp.name,
+          "critical",
           `Element extends beyond viewport right edge: <${el.tag}> class="${el.cls}" right=${el.right}px (viewport=${vp.width}px)`,
-          'Replace fixed pixel widths with max-width, %, or responsive units'
+          "Replace fixed pixel widths with max-width, %, or responsive units",
         );
       }
     }
 
     // --- CHECK 8: form field stacking on mobile ---
     if (vp.width <= 520) {
-      const emailPhoneRow = await page.$('.email-phone-row');
+      const emailPhoneRow = await page.$(".email-phone-row");
       if (emailPhoneRow) {
-        const cols = await page.evaluate(el => {
+        const cols = await page.evaluate((el) => {
           return window.getComputedStyle(el).gridTemplateColumns;
         }, emailPhoneRow);
-        if (!cols.includes('1fr') || cols.split(' ').length > 1) {
+        if (!cols.includes("1fr") || cols.split(" ").length > 1) {
           // Check if both children are stacked or side-by-side
-          const children = await emailPhoneRow.$$(':scope > div');
+          const children = await emailPhoneRow.$$(":scope > div");
           if (children.length === 2) {
             const r1 = await children[0].boundingBox();
             const r2 = await children[1].boundingBox();
             if (r1 && r2 && Math.abs(r1.y - r2.y) < 10) {
-              note('kontakt', vp.name, 'medium',
-                'Email/phone fields are side-by-side at 520px or below — may be too narrow for comfortable input',
-                'In Kontakt.jsx @media (max-width:520px) the .email-phone-row should be 1fr — verify the CSS is applying correctly'
+              note(
+                "kontakt",
+                vp.name,
+                "medium",
+                "Email/phone fields are side-by-side at 520px or below — may be too narrow for comfortable input",
+                "In Kontakt.jsx @media (max-width:520px) the .email-phone-row should be 1fr — verify the CSS is applying correctly",
               );
             }
           }
@@ -253,23 +320,32 @@ async function run() {
     }
 
     // --- CHECK 9: sticky nav overlap on sections ---
-    const heroSection = await page.$('#hero');
+    const heroSection = await page.$("#hero");
     if (heroSection) {
-      const heroTop = await heroSection.evaluate(el => el.getBoundingClientRect().top + window.scrollY);
-      const nav = await page.$('nav');
+      const heroTop = await heroSection.evaluate(
+        (el) => el.getBoundingClientRect().top + window.scrollY,
+      );
+      const nav = await page.$("nav");
       if (nav) {
-        const navHeight = await nav.evaluate(el => el.getBoundingClientRect().height);
+        const navHeight = await nav.evaluate(
+          (el) => el.getBoundingClientRect().height,
+        );
         // Hero has paddingTop on desktop/mobile - check it's enough
         const heroStyle = await page.evaluate(() => {
-          const hero = document.querySelector('#hero .hero-desktop, #hero .hero-mobile');
+          const hero = document.querySelector(
+            "#hero .hero-desktop, #hero .hero-mobile",
+          );
           return hero ? window.getComputedStyle(hero).paddingTop : null;
         });
         if (heroStyle) {
           const pt = parseInt(heroStyle);
           if (pt < navHeight) {
-            note('hero', vp.name, 'medium',
+            note(
+              "hero",
+              vp.name,
+              "medium",
               `Hero section padding-top (${pt}px) may be less than nav height (~${Math.round(navHeight)}px) — content could be hidden under fixed nav`,
-              'Increase hero paddingTop to at least match nav height'
+              "Increase hero paddingTop to at least match nav height",
             );
           }
         }
@@ -280,53 +356,69 @@ async function run() {
   }
 
   // --- LANDSCAPE SPECIFIC: also check 844x390 more carefully ---
-  console.log('\n=== Extra landscape checks ===');
+  console.log("\n=== Extra landscape checks ===");
   const page2 = await browser.newPage();
   await page2.setViewportSize({ width: 844, height: 390 });
-  await page2.goto(BASE_URL, { waitUntil: 'networkidle' });
+  await page2.goto(BASE_URL, { waitUntil: "networkidle" });
   await page2.waitForTimeout(1200);
 
   // Check hero on landscape — the hero-mobile triggers at <768px but landscape phone is 844px wide!
   const heroDesktopVisible = await page2.evaluate(() => {
-    const d = document.querySelector('.hero-desktop');
-    return d ? window.getComputedStyle(d).display !== 'none' : false;
+    const d = document.querySelector(".hero-desktop");
+    return d ? window.getComputedStyle(d).display !== "none" : false;
   });
   const heroMobileVisible = await page2.evaluate(() => {
-    const m = document.querySelector('.hero-mobile');
-    return m ? window.getComputedStyle(m).display !== 'none' : false;
+    const m = document.querySelector(".hero-mobile");
+    return m ? window.getComputedStyle(m).display !== "none" : false;
   });
-  console.log(`  Landscape 844x390: hero-desktop visible=${heroDesktopVisible}, hero-mobile visible=${heroMobileVisible}`);
+  console.log(
+    `  Landscape 844x390: hero-desktop visible=${heroDesktopVisible}, hero-mobile visible=${heroMobileVisible}`,
+  );
 
   if (!heroDesktopVisible && !heroMobileVisible) {
-    note('hero', '844x390-landscape', 'critical', 'Neither hero-desktop nor hero-mobile is visible in landscape mode', 'Check display logic; at 844px width hero-desktop should show');
-  }
-
-  const heroOverflow = await page2.evaluate(() => document.body.scrollWidth > window.innerWidth);
-  if (heroOverflow) {
-    note('hero', '844x390-landscape', 'high',
-      `Horizontal overflow in landscape mode: scrollWidth=${document.body.scrollWidth}px`,
-      'Check hero bento grid at intermediate widths'
+    note(
+      "hero",
+      "844x390-landscape",
+      "critical",
+      "Neither hero-desktop nor hero-mobile is visible in landscape mode",
+      "Check display logic; at 844px width hero-desktop should show",
     );
   }
 
-  await page2.screenshot({ path: `${OUT}/full_844x390-landscape.png`, fullPage: false });
+  const heroOverflow = await page2.evaluate(
+    () => document.body.scrollWidth > window.innerWidth,
+  );
+  if (heroOverflow) {
+    note(
+      "hero",
+      "844x390-landscape",
+      "high",
+      `Horizontal overflow in landscape mode: scrollWidth=${document.body.scrollWidth}px`,
+      "Check hero bento grid at intermediate widths",
+    );
+  }
+
+  await page2.screenshot({
+    path: `${OUT}/full_844x390-landscape.png`,
+    fullPage: false,
+  });
   await page2.close();
 
   await browser.close();
 
   // --- OUTPUT REPORT ---
   const report = generateReport(findings);
-  const fs = await import('fs');
-  fs.writeFileSync(`${OUT}/REPORT.md`, report, 'utf-8');
+  const fs = await import("fs");
+  fs.writeFileSync(`${OUT}/REPORT.md`, report, "utf-8");
   console.log(`\nReport written to responsive-audit/REPORT.md`);
   console.log(`Total findings: ${findings.length}`);
 }
 
 function generateReport(findings) {
-  const critical = findings.filter(f => f.severity === 'critical');
-  const high = findings.filter(f => f.severity === 'high');
-  const medium = findings.filter(f => f.severity === 'medium');
-  const low = findings.filter(f => f.severity === 'low');
+  const critical = findings.filter((f) => f.severity === "critical");
+  const high = findings.filter((f) => f.severity === "high");
+  const medium = findings.filter((f) => f.severity === "medium");
+  const low = findings.filter((f) => f.severity === "low");
 
   const groupBy = (arr, key) => {
     return arr.reduce((acc, item) => {
@@ -337,8 +429,8 @@ function generateReport(findings) {
     }, {});
   };
 
-  let md = `# Responsive Design Audit — CleanPro Gebäudeservice
-**Datum:** ${new Date().toISOString().split('T')[0]}
+  let md = `# Responsive Design Audit — Nordiva Gebäudereinigung
+**Datum:** ${new Date().toISOString().split("T")[0]}
 **Tech-Stack:** React 18 · Vite · Tailwind CSS (via CDN) · Framer Motion · EmailJS
 **Seiten:** Single-Page Application — alle Sektionen auf einer URL (/)
 **Getestete Viewports:** 320×568, 375×812, 768×1024, 1024×768, 1280×800, 1440×900, 1920×1080, 844×390 (Querformat)
@@ -363,7 +455,7 @@ function generateReport(findings) {
 `;
 
   if (critical.length === 0) {
-    md += '_Keine kritischen Probleme gefunden._\n\n';
+    md += "_Keine kritischen Probleme gefunden._\n\n";
   } else {
     for (const f of critical) {
       md += `### [${f.section}] @ ${f.viewport}\n**Problem:** ${f.description}\n**Lösung:** ${f.fix}\n\n`;
@@ -372,7 +464,7 @@ function generateReport(findings) {
 
   md += `## 🟠 Hohe Priorität\n\n`;
   if (high.length === 0) {
-    md += '_Keine hohen Prioritäten._\n\n';
+    md += "_Keine hohen Prioritäten._\n\n";
   } else {
     for (const f of high) {
       md += `### [${f.section}] @ ${f.viewport}\n**Problem:** ${f.description}\n**Lösung:** ${f.fix}\n\n`;
@@ -381,7 +473,7 @@ function generateReport(findings) {
 
   md += `## 🟡 Mittlere Priorität\n\n`;
   if (medium.length === 0) {
-    md += '_Keine mittleren Prioritäten._\n\n';
+    md += "_Keine mittleren Prioritäten._\n\n";
   } else {
     for (const f of medium) {
       md += `### [${f.section}] @ ${f.viewport}\n**Problem:** ${f.description}\n**Lösung:** ${f.fix}\n\n`;
@@ -488,7 +580,7 @@ function generateReport(findings) {
   return md;
 }
 
-run().catch(err => {
-  console.error('Audit failed:', err);
+run().catch((err) => {
+  console.error("Audit failed:", err);
   process.exit(1);
 });
