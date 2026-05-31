@@ -328,9 +328,8 @@ footer.site { background: var(--bg-soft); border-top: 1px solid var(--line); pad
   body { padding-bottom: 76px; }
 }
 
-/* Hide nav CTA & logo subtitle at small screens — drawer handles navigation */
+/* Hide nav CTA at small screens — drawer handles navigation */
 @media (max-width: 640px) {
-  .logo span { display: none; }
   .nav-right .btn { display: none; }
 }
 

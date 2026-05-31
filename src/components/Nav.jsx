@@ -12,6 +12,16 @@ export default function Nav() {
 
   const close = () => setOpen(false)
 
+  const closeAndScrollTo = (id) => {
+    setOpen(false)
+    setTimeout(() => {
+      const el = document.getElementById(id)
+      if (!el) return
+      el.scrollIntoView({ behavior: 'smooth' })
+      el.querySelectorAll('.rv').forEach(rv => rv.classList.add('in'))
+    }, 350)
+  }
+
   return (
     <>
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
@@ -46,7 +56,7 @@ export default function Nav() {
         <a href="#bewertungen" onClick={close}>Bewertungen</a>
         <a href="#faq" onClick={close}>FAQ</a>
         <a href="tel:+4915510057038" style={{ color: 'var(--green-deep)', border: 0 }} onClick={close}>📞 0155 1005 7038</a>
-        <a href="#kostenvoranschlag" className="btn btn-green" onClick={close}>Kostenvoranschlag anfordern</a>
+        <button className="btn btn-green" style={{ border: 0, cursor: 'pointer', textAlign: 'center' }} onClick={() => closeAndScrollTo('kostenvoranschlag')}>Kostenvoranschlag anfordern</button>
       </div>
     </>
   )
