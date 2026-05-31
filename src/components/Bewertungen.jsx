@@ -21,30 +21,30 @@ export default function Bewertungen() {
         <div className="rev-grid rv">
           <div className="rev-card">
             <div className="stars">★★★★★</div>
-            <p>„Endlich ein Reinigungsservice, bei dem das Team immer pünktlich ist und wirklich konstant sauber arbeitet. Empfehlen wir seit zwei Jahren jedem Eigentümer weiter."</p>
+            <p>„Zufrieden.. ich kann es nur weiterempfehlen 👍🏼"</p>
             <div className="rev-foot">
-              <div className="av">M</div>
-              <div><b>Maria K.</b><span>Hausverwaltung, Bönen</span></div>
+              <div className="av">A</div>
+              <div><b>Andirena Alhasan</b><span>Google-Bewertung</span></div>
               <GoogleLogo />
             </div>
           </div>
 
           <div className="rev-card">
             <div className="stars">★★★★★</div>
-            <p>„Für unsere Zahnarztpraxis war ein verlässlicher Partner wichtig. Nordiva hat vom ersten Termin an überzeugt — und der Festpreis gilt wirklich. Sehr zu empfehlen."</p>
+            <p>„Zuverlässig und sauber. Kann ich nur weiterempfehlen."</p>
             <div className="rev-foot">
               <div className="av">T</div>
-              <div><b>Thomas B.</b><span>Praxisinhaber, Unna</span></div>
+              <div><b>Torina Dezlar</b><span>Google-Bewertung</span></div>
               <GoogleLogo />
             </div>
           </div>
 
           <div className="rev-card">
             <div className="stars">★★★★★</div>
-            <p>„Der Turnover klappt reibungslos — Wäsche, Endreinigung, Foto-Check. Meine Gäste loben die Sauberkeit in fast jeder Bewertung. Genau so muss das sein."</p>
+            <p>„Ich bin wirklich begeistert vom Service. Die Mitarbeiter waren freundlich, sorgfältig und haben hervorragende Arbeit geleistet. Alles war perfekt sauber und ordentlich. Vielen Dank für die tolle Arbeit – jederzeit gerne wieder!"</p>
             <div className="rev-foot">
-              <div className="av">S</div>
-              <div><b>Sandra M.</b><span>Airbnb-Gastgeberin, Kamen</span></div>
+              <div className="av">G</div>
+              <div><b>Gule Hasso</b><span>Google-Bewertung</span></div>
               <GoogleLogo />
             </div>
           </div>

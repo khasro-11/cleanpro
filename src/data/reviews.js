@@ -11,12 +11,25 @@ export const AGGREGATE = {
 };
 
 export const REVIEWS = [
-  // TODO: Echte Google-Bewertungen einfügen. Vorlage:
-  // {
-  //   name: 'Vorname N.',          // Nur Vorname + Anfangsbuchstabe (Datenschutz)
-  //   role: 'Google-Bewertung',    // oder z.B. "Hausverwaltung, Bönen"
-  //   quote: 'Bewertungstext...',  // wörtlich von Google kopieren
-  //   stars: 5,
-  //   photo: null,                 // optional: URL des öffentlichen Profilfotos
-  // },
+  {
+    name: 'Andirena Alhasan',
+    role: 'Google-Bewertung',
+    quote: 'Zufrieden.. ich kann es nur weiterempfehlen 👍🏼',
+    stars: 5,
+    photo: null,
+  },
+  {
+    name: 'Torina Dezlar',
+    role: 'Google-Bewertung',
+    quote: 'Zuverlässig und sauber. Kann ich nur weiterempfehlen.',
+    stars: 5,
+    photo: null,
+  },
+  {
+    name: 'Gule Hasso',
+    role: 'Google-Bewertung',
+    quote: 'Ich bin wirklich begeistert vom Service. Die Mitarbeiter waren freundlich, sorgfältig und haben hervorragende Arbeit geleistet. Alles war perfekt sauber und ordentlich. Vielen Dank für die tolle Arbeit – jederzeit gerne wieder!',
+    stars: 5,
+    photo: null,
+  },
 ];
