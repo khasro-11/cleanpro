@@ -8,7 +8,9 @@
       "Bash(curl -s http://localhost:3000/gebaeudereinigung-boenen/)",
       "Bash(xargs sed -i '' 's/Nordiva Gebäudereinigung/Nordiva Gebäudereinigung/g')",
       "Bash(node screenshot.mjs http://localhost:3000 desktop)",
-      "Bash(node screenshot.mjs http://localhost:3000 desktop-full)"
+      "Bash(node screenshot.mjs http://localhost:3000 desktop-full)",
+      "Bash(cp /tmp/test-site.mjs /Users/dulstankutna/Desktop/cleanpro-main/test-site.mjs)",
+      "Bash(node test-site.mjs)"
     ]
   }
 }
