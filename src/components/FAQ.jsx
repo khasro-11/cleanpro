@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import PhoneIcon from './PhoneIcon'
 
 const FAQS = [
   {
@@ -50,7 +51,9 @@ export default function FAQ() {
             <p style={{ color: 'var(--ink-soft)', margin: '0 0 22px' }}>
               Ihre Frage ist nicht dabei? Rufen Sie an — wir helfen sofort weiter.
             </p>
-            <a href="tel:+4915510057038" className="btn btn-ghost">📞 0155 1005 7038</a>
+            <a href="tel:+4915510057038" className="btn btn-ghost" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
+              <PhoneIcon size={16} />0155 1005 7038
+            </a>
           </div>
 
           <div className="faq-list rv">

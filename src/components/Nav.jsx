@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import PhoneIcon from './PhoneIcon'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
@@ -39,7 +40,9 @@ export default function Nav() {
             <a href="#faq">FAQ</a>
           </div>
           <div className="nav-right">
-            <a href="tel:+4915510057038" className="nav-tel">📞 0155 1005 7038</a>
+            <a href="tel:+4915510057038" className="nav-tel" style={{ display: 'inline-flex', alignItems: 'center', gap: '7px' }}>
+              <PhoneIcon size={16} />0155 1005 7038
+            </a>
             <a href="#kostenvoranschlag" className="btn btn-green" style={{ padding: '11px 20px' }}>Kostenvoranschlag</a>
             <div className="nav-burger" onClick={() => setOpen(true)}>
               <i /><i /><i />
@@ -55,7 +58,9 @@ export default function Nav() {
         <a href="#vorteile" onClick={close}>Vorteile</a>
         <a href="#bewertungen" onClick={close}>Bewertungen</a>
         <a href="#faq" onClick={close}>FAQ</a>
-        <a href="tel:+4915510057038" style={{ color: 'var(--green-deep)', border: 0 }} onClick={close}>📞 0155 1005 7038</a>
+        <a href="tel:+4915510057038" style={{ color: 'var(--green-deep)', border: 0, display: 'flex', alignItems: 'center', gap: '10px' }} onClick={close}>
+          <PhoneIcon size={20} />0155 1005 7038
+        </a>
         <button className="btn btn-green" style={{ border: 0, cursor: 'pointer', textAlign: 'center' }} onClick={() => closeAndScrollTo('kostenvoranschlag')}>Kostenvoranschlag anfordern</button>
       </div>
     </>

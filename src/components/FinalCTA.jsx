@@ -1,3 +1,5 @@
+import PhoneIcon from './PhoneIcon'
+
 export default function FinalCTA() {
   return (
     <section style={{ paddingTop: '24px' }}>
@@ -14,7 +16,7 @@ export default function FinalCTA() {
                 className="btn btn-lg"
                 style={{ background: 'transparent', color: '#fff', borderColor: 'rgba(255,255,255,.4)' }}
               >
-                📞 0155 1005 7038
+                <PhoneIcon size={16} style={{ marginRight: '7px' }} />0155 1005 7038
               </a>
             </div>
           </div>
