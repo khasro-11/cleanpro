@@ -10,9 +10,13 @@ const EMAILJS_KEY = import.meta.env.VITE_EMAILJS_KEY || "pMvYvsy9XX0St2gjU";
 const SERVICES = [
   "Büroreinigung",
   "Fenster & Glas",
-  "Treppenhaus",
-  "Ferienwohnung",
-  "Grundreinigung",
+  "Treppenhaus & Gebäude",
+  "Ferienwohnung & Airbnb",
+  "Grund- & Bauendreinigung",
+  "PV- & Solaranlagen",
+  "Praxisreinigung",
+  "KITA-Reinigung",
+  "Fassadenreinigung",
 ];
 const FREQUENCIES = [
   "Einmalig",
@@ -50,20 +54,35 @@ export default function Kostenvoranschlag() {
   const TOTAL = 3;
 
   const toggleService = (v) => {
-    setSelectedServices((prev) =>
-      prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v],
-    );
+    setSelectedServices((prev) => {
+      const next = prev.includes(v) ? prev.filter((x) => x !== v) : [...prev, v];
+      if (next.length > 0) setErrors((r) => ({ ...r, services: false }));
+      return next;
+    });
   };
 
   const handleNext = async () => {
-    if (step < TOTAL) {
-      setStep((s) => s + 1);
+    if (step === 1) {
+      if (selectedServices.length === 0) {
+        setErrors((r) => ({ ...r, services: true }));
+        return;
+      }
+      setStep(2);
+      return;
+    }
+    if (step === 2) {
+      if (!selectedFreq) {
+        setErrors((r) => ({ ...r, freq: true }));
+        return;
+      }
+      setStep(3);
       return;
     }
     // validate step 3
     const e = {};
     if (!form.name.trim()) e.name = true;
     if (!form.tel.trim()) e.tel = true;
+    if (!form.email.trim()) e.email = true;
     if (!form.consent) e.consent = true;
     if (Object.keys(e).length) {
       setErrors(e);
@@ -207,6 +226,9 @@ export default function Kostenvoranschlag() {
                       </div>
                     ))}
                   </div>
+                  {errors.services && (
+                    <p className="step-error">Bitte mindestens eine Leistung auswählen.</p>
+                  )}
                 </div>
 
                 {/* Step 2 */}
@@ -221,7 +243,10 @@ export default function Kostenvoranschlag() {
                       <div
                         key={v}
                         className={`opt radio${selectedFreq === v ? " on" : ""}`}
-                        onClick={() => setSelectedFreq(v)}
+                        onClick={() => {
+                          setSelectedFreq(v);
+                          setErrors((r) => ({ ...r, freq: false }));
+                        }}
                       >
                         <span className="box">
                           <CheckIcon />
@@ -239,6 +264,9 @@ export default function Kostenvoranschlag() {
                       </div>
                     ))}
                   </div>
+                  {errors.freq && (
+                    <p className="step-error">Bitte eine Häufigkeit auswählen.</p>
+                  )}
                 </div>
 
                 {/* Step 3 */}
@@ -283,14 +311,18 @@ export default function Kostenvoranschlag() {
                     </div>
                   </div>
                   <div className="field">
-                    <label>E-Mail</label>
+                    <label>
+                      E-Mail <span className="req">*</span>
+                    </label>
                     <input
                       type="email"
                       placeholder="name@beispiel.de"
                       value={form.email}
-                      onChange={(e) =>
-                        setForm((f) => ({ ...f, email: e.target.value }))
-                      }
+                      onChange={(e) => {
+                        setForm((f) => ({ ...f, email: e.target.value }));
+                        setErrors((r) => ({ ...r, email: false }));
+                      }}
+                      style={errors.email ? { borderColor: "#d8543e" } : {}}
                     />
                   </div>
                   <div className="field">
