@@ -5,7 +5,7 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="foot-brand">
             <a href="#top" className="logo">
-              <span className="mark">N</span>
+              <img src="/brand/icon-mark.svg" alt="" className="mark" width="32" height="32" />
               <b>Nordiva</b>
               <span>Gebäudereinigung</span>
             </a>

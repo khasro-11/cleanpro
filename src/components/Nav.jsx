@@ -29,7 +29,7 @@ export default function Nav() {
       <nav className={`nav${scrolled ? ' scrolled' : ''}`}>
         <div className="wrap nav-in">
           <a href="#top" className="logo">
-            <span className="mark">N</span>
+            <img src="/brand/icon-mark.svg" alt="" className="mark" width="32" height="32" />
             <b>Nordiva</b>
             <span>Gebäudereinigung</span>
           </a>
