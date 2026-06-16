@@ -5,9 +5,7 @@ export default function Footer() {
         <div className="foot-grid">
           <div className="foot-brand">
             <a href="#top" className="logo">
-              <img src="/favicon.svg" alt="" className="mark" width="34" height="34" />
-              <b>Nordiva</b>
-              <span>Gebäudereinigung</span>
+              <img src="/brand/logo.svg" alt="Nordiva Gebäudereinigung" className="logo-img" />
             </a>
             <p className="foot-note">
               Inhabergeführte Gebäudereinigung aus Bönen. Noch Fragen? Rufen Sie einfach an — Sie sprechen direkt mit dem Inhaber, nicht mit einem Callcenter.
