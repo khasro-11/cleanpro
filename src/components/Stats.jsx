@@ -4,8 +4,8 @@ export default function Stats() {
       <div className="wrap">
         <div className="stats-grid rv">
           <div className="stat">
-            <b>50<span>+</span></b>
-            <p>Betreute Objekte in Bönen &amp; Umgebung</p>
+            <b>Persön<span>lich</span></b>
+            <p>Direkter Draht zum Inhaber — kein Callcenter</p>
           </div>
           <div className="stat">
             <b>&lt; 4<span> Std</span></b>
