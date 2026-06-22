@@ -109,6 +109,11 @@ export default function Kostenvoranschlag() {
         },
         EMAILJS_KEY,
       );
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'conversion', {
+          send_to: 'AW-18172704873/Yy95CNGYuMMcEOnwtdlD',
+        });
+      }
       setDone(true);
     } catch {
       setDone(true);
