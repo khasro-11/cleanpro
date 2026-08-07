@@ -1,11 +1,4 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
-
-const EMAILJS_SERVICE =
-  import.meta.env.VITE_EMAILJS_SERVICE || "service_b5s1o4r";
-const EMAILJS_TEMPLATE =
-  import.meta.env.VITE_EMAILJS_TEMPLATE || "template_fxi5j53";
-const EMAILJS_KEY = import.meta.env.VITE_EMAILJS_KEY || "pMvYvsy9XX0St2gjU";
 
 const SERVICES = [
   "Büroreinigung",
@@ -90,25 +83,20 @@ export default function Kostenvoranschlag() {
     }
     setSending(true);
     try {
-      await emailjs.send(
-        EMAILJS_SERVICE,
-        EMAILJS_TEMPLATE,
-        {
-          from_name: form.name,
-          from_email: form.email || "—",
-          from_phone: form.tel,
-          object_type: selectedServices.join(", ") || "—",
-          frequenz: selectedFreq || "—",
-          flaeche: form.ort || "—",
-          starttermin: "—",
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: form.name,
+          phone: form.tel,
+          email: form.email,
+          services: selectedServices.join(", ") || "—",
+          frequency: selectedFreq || "—",
+          location: form.ort || "—",
           message: form.nachricht || "—",
-          submitted_at: new Date().toLocaleString("de-DE", {
-            dateStyle: "short",
-            timeStyle: "short",
-          }),
-        },
-        EMAILJS_KEY,
-      );
+        }),
+      });
+      if (!res.ok) throw new Error("Request failed");
       if (typeof window.gtag === 'function') {
         window.gtag('event', 'conversion', {
           send_to: 'AW-18172704873/Yy95CNGYuMMcEOnwtdlD',
